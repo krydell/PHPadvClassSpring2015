@@ -9,13 +9,35 @@
         
         
         <?php
-        
+       
+        /* Start by creating the classes and files you need
+         * 
+         */
 $util = new Util();
 $validator = new Validator();
 
+/*
+ * When dealing with forms always collect the data before trying to validate
+ * 
+ * When getting values from $_POST or $_GET use filter_input
+ */
 $phoneType = filter_input(INPUT_POST, 'phonetype');
 
+// We use errors to add issues to notify the user
 $errors = array();
+
+
+/*
+ * We setup this config to get a standard database setup for the page
+ */
+$dbConfig = array(
+        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+        "DB_USER"=>'root',
+        "DB_PASSWORD"=>''
+        );
+
+$pdo = new DB($dbConfig);
+$db = $pdo->getDB();
 
 if ( $util->isPostRequest() ) {
 
@@ -31,15 +53,10 @@ if ( count($errors) > 0 ) {
 } else {
     
     //save to to database.
-    $dbConfig = array(
-        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
-        "DB_USER"=>'root',
-        "DB_PASSWORD"=>''
-        );
+    
             
     
-    $pdo = new DB($dbConfig);
-    $db = $pdo->getDB();
+    
     $stmt = $db->prepare("INSERT INTO phonetype SET phonetype = :phonetype");  
                     
     $values = array(":phonetype"=>$phoneType);
@@ -66,15 +83,7 @@ if ( count($errors) > 0 ) {
          
          
     <?php 
-    
-    $dbConfig = array(
-        "DB_DNS" => 'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
-        "DB_USER" => 'root', 
-        "DB_PASSWORD" => '');
-
-    $pdo = new DB($dbConfig);
-    $db = $pdo->getDB();
-
+       
     $stmt = $db->prepare("SELECT * FROM phonetype where active = 1");
 
     if ($stmt->execute() && $stmt->rowCount() > 0) {
