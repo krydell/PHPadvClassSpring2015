@@ -9,6 +9,8 @@
     </head>
     <body>
         
+        <font face="Tahoma">
+        
 <?php 
 
 // Get the e-mail type from post to fill into the e-mail type textbox.
@@ -36,6 +38,8 @@ $em ->saveEmails();
 $em ->getEmails();
 
 ?>
-   
+        
+        </font>
+        
     </body>
 </html>
