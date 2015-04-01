@@ -11,7 +11,7 @@
         
 <?php 
 
-// Create an e-mail class, and run the get-email function from it
+// Get the e-mail type from post to fill into the e-mail type textbox.
 
 $emailType = filter_input(INPUT_POST, 'emailtype');       
 
