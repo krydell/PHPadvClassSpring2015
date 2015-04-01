@@ -39,36 +39,45 @@ $dbConfig = array(
 $pdo = new DB($dbConfig);
 $db = $pdo->getDB();
 
+/*
+ * we utilize our classes to have less code on the page
+ * 
+ */
 if ( $util->isPostRequest() ) {
 
+    // we validate only if a post has been made
     if ( !$validator->phoneTypeIsValid($phoneType) ) {
         $errors[] = 'Phone type is not valid';
     }
-}
+    
+    
+    
+    
+    // if there are errors display them
+    if ( count($errors) > 0 ) {
+        foreach ($errors as $value) {
+            echo '<p>',$value,'</p>';
+        }
+    } else {
 
-if ( count($errors) > 0 ) {
-    foreach ($errors as $value) {
-        echo '<p>',$value,'</p>';
+        //if no errors, save to to database.
+
+        $stmt = $db->prepare("INSERT INTO phonetype SET phonetype = :phonetype");  
+
+        $values = array(":phonetype"=>$phoneType);
+
+        if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
+            echo 'Phone Added';
+        }       
+
+
     }
-} else {
-    
-    //save to to database.
-    
-            
-    
-    
-    $stmt = $db->prepare("INSERT INTO phonetype SET phonetype = :phonetype");  
-                    
-    $values = array(":phonetype"=>$phoneType);
 
-    if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
-        echo 'Phone Added';
-    }       
-    
     
     
 }
-        
+
+    
         
         
        
@@ -84,11 +93,19 @@ if ( count($errors) > 0 ) {
          
     <?php 
        
+    // lets get the database values and display them
     $stmt = $db->prepare("SELECT * FROM phonetype where active = 1");
 
     if ($stmt->execute() && $stmt->rowCount() > 0) {
+        /*
+         * There is fetchAll which gets all the values and
+         * fetch which gets one row.
+         */
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // results returns as a assoc array
+        // you can run the next line to see the variable
+        // var_dump($results)
         foreach ($results as $value) {
             echo '<p>', $value['phonetype'], '</p>';
         }
