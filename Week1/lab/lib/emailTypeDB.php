@@ -1,7 +1,7 @@
 <?php
 
 /*
- *  Returns an echo of the e-mails found.
+ *  Sends back an echo of the e-mails found.
  * 
  */
 class emailTypeDB {
@@ -28,7 +28,7 @@ class emailTypeDB {
     }
     
 /*
- *  Saves the e-mails to the databse.
+ *  Sends the e-mails to the databse.
  * 
  * 
  */    

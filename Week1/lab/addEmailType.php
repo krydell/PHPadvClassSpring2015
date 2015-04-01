@@ -5,14 +5,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>E-mail Submission</title>
     </head>
     <body>
         
- 
+       
+
+
+        <h3>Add email type</h3>
+        <form action="#" method="post">
+            <label>E-mail Type:</label> 
+            <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
+            <input type="submit" value="Submit" />
+        </form>
+
 <?php 
 
-// Create an e-mail class, and run the get-email function
+// Create an e-mail class, and run the get-email function from it
 
 $emailType = filter_input(INPUT_POST, 'emailtype');
 
@@ -23,15 +32,6 @@ $em ->saveEmails();
 $em ->getEmails();
 
 ?>
-
-        <h3>Add email type</h3>
-        <form action="#" method="post">
-            <label>E-mail Type:</label> 
-            <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
-            <input type="submit" value="Submit" />
-        </form>
-
-
 
     
          
