@@ -9,7 +9,13 @@
     </head>
     <body>
         
-       
+<?php 
+
+// Create an e-mail class, and run the get-email function from it
+
+$emailType = filter_input(INPUT_POST, 'emailtype');       
+
+?>
 
 
         <h3>Add email type</h3>
@@ -23,8 +29,6 @@
 
 // Create an e-mail class, and run the get-email function from it
 
-$emailType = filter_input(INPUT_POST, 'emailtype');
-
 $em = new emailTypeDB();
 
 $em ->saveEmails();
@@ -32,10 +36,6 @@ $em ->saveEmails();
 $em ->getEmails();
 
 ?>
-
-    
-         
-         
-         
+   
     </body>
 </html>

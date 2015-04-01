@@ -1,11 +1,17 @@
 <?php
 
-/*
- *  Sends back an echo of the e-mails found.
+/* 
+ * The class that deals with e-mail types.
  * 
  */
-class emailTypeDB {
 
+class emailTypeDB {
+  
+ 
+/*
+ *  Sends back an echo of the e-mails found.
+ */   
+    
     public function getEmails(){
         
         $dbConfig = array(
@@ -22,7 +28,7 @@ class emailTypeDB {
                 echo '<p>- <strong>', $value['emailtype'], '</strong></p>';
             }
         } else {
-            echo '<p>No Data</p>';
+            echo '<p>No data found!</p>';
         }        
         
     }
