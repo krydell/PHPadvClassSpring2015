@@ -9,44 +9,20 @@
     </head>
     <body>
         
-        
-        <?php
-        
-        $util = new Util();
-        
-        $validator = new Validator();
-        $emailType = filter_input(INPUT_POST, 'emailtype');
-        $errors = array();
-        if ($util->isPostRequest()) {
-            if (!$validator->emailTypeIsValid($emailType)) {
-                $errors[] = 'E-mail type is not valid';
-            }
-        }
-        if (count($errors) > 0) {
-            foreach ($errors as $value) {
-                echo '<p>', $value, '</p>';
-            }
-        } else {
+ 
+<?php 
 
-            // Save the submission into the database. 
-            
-            $dbConfig = array(
-                "DB_DNS" => 'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
-                "DB_USER" => 'root',
-                "DB_PASSWORD" => ''
-            );
+// Create an e-mail class, and run the get-email function
 
+$emailType = filter_input(INPUT_POST, 'emailtype');
 
-            $pdo = new DB($dbConfig);
-            $db = $pdo->getDB();
-            $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype");
+$em = new emailTypeDB();
 
-            $values = array(":emailtype" => $emailType);
-            if ($stmt->execute($values) && $stmt->rowCount() > 0) {
-                echo 'E-mail Added';
-            }
-        }
-        ?>
+$em ->saveEmails();
+
+$em ->getEmails();
+
+?>
 
         <h3>Add email type</h3>
         <form action="#" method="post">
@@ -57,13 +33,6 @@
 
 
 
-<?php 
-
-$em = new emailTypeDB();
-
-$em ->getEmails();
-
-?>
     
          
          

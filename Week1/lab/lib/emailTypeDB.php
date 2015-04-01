@@ -1,11 +1,9 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ *  Returns an echo of the e-mails found.
+ * 
  */
-
 class emailTypeDB {
 
     public function getEmails(){
@@ -28,6 +26,13 @@ class emailTypeDB {
         }        
         
     }
+    
+/*
+ *  Saves the e-mails to the databse.
+ * 
+ * 
+ */    
+    
     public function saveEmails(){
         $util = new Util();
         
