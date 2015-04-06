@@ -12,6 +12,8 @@
  *
  * @author User
  */
+
+// *** NOTE this class is not complete and does not work
 class PhoneDAO implements IDAO {
     
     private $DB = null;
