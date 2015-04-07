@@ -19,7 +19,7 @@ Secondary
 Database name to create: PHPadvClassSpring2015
 
 Tables:
-
+```
 CREATE TABLE IF NOT EXISTS emailtype (
 emailtypeid TINYINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
 emailtype VARCHAR(50) NOT NULL UNIQUE KEY, 
@@ -38,7 +38,7 @@ lastupdated DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 active tinyint(1) UNSIGNED NOT NULL DEFAULT '1'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
-
+```
 
 
 Lab 2
@@ -49,21 +49,21 @@ Lets begin to design some classes with Object-oriented principles in PHP.
 Use the email and emailtype tables for this assignments. A model and data access object should be created for each table.
 
 Create a Data Object/Model that will implement this interface.  The model should follow the column names in the Database.
-
+```
 interface IModel {
     public function reset();
     public function map(array $values);
 }
-
+```
 Create a Data Access Object class that will implement this interface.
-
+```
 interface IDAO {
     public function getById($id);
     public function delete($id); 
     public function save(IModel $model);
     public function getAllRows();
 }
-
+```
  
 
 You will need a Database class to inject into your DAO class.
