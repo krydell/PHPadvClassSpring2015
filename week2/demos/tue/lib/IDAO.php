@@ -51,5 +51,6 @@ interface IDAO {
     *
     * @return Array
     */
-    public function getAllRows();
+    
+    
 }

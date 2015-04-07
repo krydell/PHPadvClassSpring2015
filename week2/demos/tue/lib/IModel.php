@@ -16,7 +16,7 @@ interface IModel {
     /**
     * A method to update all values back to an empty state.
     *
-    * @return Void
+    * @return SELF
     */
     public function reset();
     
@@ -25,7 +25,7 @@ interface IModel {
     *
     * @param {Array} [$values] - must be a valid associative array
     *
-    * @return Void
+    * @return SELF
     */
     public function map(array $values);
 }
