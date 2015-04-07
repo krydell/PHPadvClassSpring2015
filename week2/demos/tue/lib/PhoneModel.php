@@ -93,9 +93,12 @@ class PhoneModel implements IModel {
         $this->setPhoneid('');
         $this->setPhone('');
         $this->setPhonetypeid('');
+        $this->setPhonetype('');
+        $this->setPhonetypeactive('');
         $this->setLogged('');
         $this->setLastupdated('');
         $this->setActive('');
+        return $this;
     }
     
     
@@ -133,6 +136,7 @@ class PhoneModel implements IModel {
         if ( array_key_exists('active', $values) ) {
             $this->setActive($values['active']);
         }
+        return $this;
     }
 
 

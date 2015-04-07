@@ -46,7 +46,8 @@ class PhoneDAO implements IDAO {
          $model = new PhoneModel(); // this creates a dependacy, how can we fix this
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT * FROM phone WHERE phoneid = :phoneid");
+         $stmt = $db->prepare("SELECT phone.phoneid, phone.phone, phone.phonetypeid, phonetype.phonetype, phonetype.active as phonetypeactive, phone.logged, phone.lastupdated, phone.active"
+                 . " FROM phone LEFT JOIN phonetype on phone.phonetypeid = phonetype.phonetypeid WHERE phoneid = :phoneid");
          
          if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -61,16 +62,18 @@ class PhoneDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $values = array( ":phonetype" => $model->getPhonetype(),
-                          ":active" => $model->getActive()
+         $values = array( ":phone" => $model->getPhone(),
+                          ":active" => $model->getActive(),
+                          ":phonetypeid" => $model->getPhonetypeid(),
+             
                     );
          
                 
-         if ( $this->idExisit($model->getPhonetypeid()) ) {
-             $values[":phonetypeid"] = $model->getPhonetypeid();
-             $stmt = $db->prepare("UPDATE phonetype SET phonetype = :phonetype, active = :active, lastupdated = now() WHERE phonetypeid = :phonetypeid");
+         if ( $this->idExisit($model->getPhoneid()) ) {
+             $values[":phoneid"] = $model->getPhoneid();
+             $stmt = $db->prepare("UPDATE phone SET phone = :phone, phonetypeid = :phonetypeid,  active = :active, lastupdated = now() WHERE phoneid = :phoneid");
          } else {             
-             $stmt = $db->prepare("INSERT INTO phonetype SET phonetype = :phonetype, active = :active, logged = now(), lastupdated = now(), ");
+             $stmt = $db->prepare("INSERT INTO phone SET phone = :phone, phonetypeid = :phonetypeid, active = :active, logged = now(), lastupdated = now()");
          }
          
           
@@ -100,13 +103,14 @@ class PhoneDAO implements IDAO {
        
         $values = array();         
         $db = $this->getDB();               
-        $stmt = $db->prepare("SELECT * FROM phonetype");
+        $stmt = $db->prepare("SELECT phone.phoneid, phone.phone, phone.phonetypeid, phonetype.phonetype, phonetype.active as phonetypeactive, phone.logged, phone.lastupdated, phone.active"
+                 . " FROM phone LEFT JOIN phonetype on phone.phonetypeid = phonetype.phonetypeid");
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($results as $value) {
-               $model = new PhoneTypeModel();
+               $model = new PhoneModel();
                $model->reset()->map($value);
                $values[] = $model;
             }

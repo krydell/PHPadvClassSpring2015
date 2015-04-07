@@ -50,9 +50,10 @@ class PhoneTypeModel implements IModel {
         $this->setPhonetypeid('');
         $this->setPhonetype('');
         $this->setActive('');
+        return $this;
     }
     
-    public function map(array $values) {
+    public function map(Array $values) {
         
         if ( array_key_exists('phonetypeid', $values) ) {
             $this->setPhonetypeid($values['phonetypeid']);
@@ -65,6 +66,7 @@ class PhoneTypeModel implements IModel {
         if ( array_key_exists('active', $values) ) {
             $this->setActive($values['active']);
         }
+        return $this;
     }
 
 }

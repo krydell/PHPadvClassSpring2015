@@ -70,7 +70,10 @@
         <form action="#" method="post">
             <label>Phone Type:</label> 
             <input type="text" name="phonetype" value="<?php echo $phoneType; ?>" placeholder="" />
+            <br /><br />
+            <label>Active:</label>
             <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
+             <br /><br />
             <input type="submit" value="Submit" />
         </form>
          
