@@ -1,6 +1,6 @@
-##########################################################
-RUN phone.sql from the week1 demo before starting this Lab
-###########################################################
+
+#RUN phone.sql from the week1 demo before starting this Lab
+
 
 Lab 1
 -------------------------------------------------------
