@@ -9,14 +9,14 @@
         // put your code here
         include './IShapes.php';
         include './Square.php';
-        include './Triagle.php';
+        include './Triangle.php';
         
         $square = new Square();
         $triangle = new Triangle();
         
         var_dump($square);
         var_dump($square instanceof IShapes);
-        var_dump($triagle instanceof IShapes);
+        var_dump($triangle instanceof IShapes);
         
         
         
