@@ -16,13 +16,15 @@
 
         $pdo = new DB($dbConfig);
         $db = $pdo->getDB();
-
+       
         $phoneType = filter_input(INPUT_POST, 'phonetype');
         $active = filter_input(INPUT_POST, 'active');
+        $phonetypeid = filter_input(INPUT_POST, 'phonetypeid');
         
         $util = new Util();
         $validator = new Validator();
         $phoneTypeDAO = new PhoneTypeDAO($db);
+        
         
         $phonetypeModel = new PhoneTypeModel();
         $phonetypeModel->setActive($active);
@@ -33,7 +35,6 @@
         
         $phoneTypeService->saveForm();
         
-         $action = filter_input(INPUT_GET, 'active');
         
         ?>
         

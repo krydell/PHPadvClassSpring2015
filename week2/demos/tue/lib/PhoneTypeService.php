@@ -110,7 +110,7 @@ class PhoneTypeService {
                 echo '<tr>';
                 echo '<td>', $value->getPhonetype(),'</td>';
                 echo '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
-                echo '<td><a href=?action=update&phonetypeid=',$value->getPhonetypeid(),'>Update</a></td>';
+                echo '<td><a href=update.php?phonetypeid=',$value->getPhonetypeid(),'>Update</a></td>';
                 echo '<td><a href=delete.php?phonetypeid=',$value->getPhonetypeid(),'>Delete</a></td>';
                 echo '</tr>' ;
             }
