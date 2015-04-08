@@ -33,6 +33,8 @@
         
         $phoneTypeService->saveForm();
         
+         $action = filter_input(INPUT_GET, 'active');
+        
         ?>
         
         
@@ -49,7 +51,7 @@
          
          
          <?php         
-             $phoneTypeService->displayPhones();
+             $phoneTypeService->displayPhonesActions();
          ?>
          
          

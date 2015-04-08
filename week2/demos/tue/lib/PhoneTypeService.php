@@ -79,7 +79,7 @@ class PhoneTypeService {
 
 
     public function displayPhones() {        
-       
+       // this doesn't make good use of the getallrows function in my DAO
         $stmt = $this->_DB->prepare("SELECT * FROM phonetype");
 
         if ($stmt->execute() && $stmt->rowCount() > 0) {
@@ -94,6 +94,35 @@ class PhoneTypeService {
         }
         
     }
+    
+    public function displayPhonesActions() {        
+       // Notice in the previous function I should have called get all rows
+        
+        $phoneTypes = $this->_PhoneTypeDAO->getAllRows();
+        
+        if ( count($phoneTypes) < 0 ) {
+            echo '<p>No Data</p>';
+        } else {
+            
+            
+             echo '<table border="1" cellpadding="5"><tr><th>Phone Type</th><th>Active</th><th></th><th></th></tr>';
+             foreach ($phoneTypes as $value) {
+                echo '<tr>';
+                echo '<td>', $value->getPhonetype(),'</td>';
+                echo '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
+                echo '<td><a href=?action=update&phonetypeid=',$value->getPhonetypeid(),'>Update</a></td>';
+                echo '<td><a href=delete.php?phonetypeid=',$value->getPhonetypeid(),'>Delete</a></td>';
+                echo '</tr>' ;
+            }
+            echo '</table>';
+            
+        }
+        
+       
+        
+    }
+    
+    
     
     
 }
