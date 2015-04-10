@@ -42,7 +42,7 @@ class PhoneTypeService {
         } else {
             
             if (  $this->_PhoneTypeDAO->save($this->_PhoneTypeModel) ) {
-                echo 'Phone Added';
+                echo 'Phone Added/updated';
             } else {
                 echo 'Phone could not be added Added';
             }
