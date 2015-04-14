@@ -13,7 +13,7 @@
         <?php
         
         
-        
+        var_dump($scope->view);
         
         
         ?>
