@@ -15,7 +15,6 @@
 namespace APP\controller;
 
 use App\models\interfaces\IController;
-use App\models\services\Scope;
 use App\models\interfaces\IService;
 use App\models\interfaces\IModel;
 
@@ -27,7 +26,7 @@ class PhonetypeController extends BaseController implements IController {
     }
 
 
-    public function execute(Scope $scope) {
+    public function execute(IService $scope) {
                 
         $this->data['model']->reset();
         $viewPage = 'phonetype';

@@ -53,22 +53,25 @@ use Exception;
         }
         
         
-        protected function runController($page, Scope $scope) {
+        protected function runController($page, IService $scope) {
                        
             $class_name = $this->getPageController($page);
             $controller = NULL;
+                       
             
             if (array_key_exists($class_name,$this->DI)) {                
                 $controller = $this->DI[$class_name]();                
             } else { 
-                $class_name = "APP\\controller\\$class_name"; 
+                $class_name = "APP\\controller\\$class_name";
                 if (class_exists($class_name)) {
                     $controller = new $class_name();
+                    
                 }
             }
             
-            if ( $controller instanceof IController ) { 
-                return $controller->execute($scope);                   
+            if ( $controller instanceof IController ) {
+                $this->getLog()->log('instanceof?'.$class_name);
+                return $controller->execute($scope);
             }
                         
             return false;
@@ -130,11 +133,12 @@ use Exception;
             return ucfirst(strtolower($page)).'Controller';
         }
 
-        protected function checkPage($page) {
+        protected function checkPage($page) {            
             if ( !( is_string($page) && preg_match('/^[a-z0-9-]+$/i', $page) != 0 ) ) {
                 // TODO log attempt, redirect attacker, ...
                throw new PageNotFoundException('Unsafe page "' . $page . '" requested');
-            }                     
+            }        
+            
             return $page;
         }
         
@@ -191,6 +195,11 @@ use Exception;
             $_service = new PhoneTypeService($_DAO, $_validator);
             return new \APP\controller\PhonetypeController($_service, $_model);
         });
+       /* ->addDIController('test', function(){
+            return new \APP\controller\TestController();
+        })*/
+        
+        ;
         // run application!
         $index->run($_scope);
     }
