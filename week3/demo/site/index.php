@@ -4,6 +4,7 @@ namespace App\models\services;
 
 use App\models\interfaces\IController;
 use App\models\interfaces\ILogging;
+use App\models\interfaces\IService;
 use Exception;
 
  final class Index {
@@ -44,7 +45,7 @@ use Exception;
         /**
          * Run the application!
          */
-        public function run(Scope $scope) {  
+        public function run(IService $scope) {  
             $page = $this->getPage();
             if ( !$this->runController($page,$scope) ) {
                 throw new PageNotFoundException('Unsafe page "' . $page . '" requested');               
