@@ -193,10 +193,11 @@ use Exception;
             $_DAO = new PhoneTypeDAO($_pdo->getDB(), $_model, $_log);
             $_service = new PhoneTypeService($_DAO, $_validator);
             return new \APP\controller\PhonetypeController($_service, $_model);
-        });
-       /* ->addDIController('test', function(){
-            return new \APP\controller\TestController();
-        })*/
+        })
+        ->addDIController('test', function(){
+            $_service = new TestService();
+            return new \APP\controller\TestController($_service);
+        })
         
         ;
         // run application!
