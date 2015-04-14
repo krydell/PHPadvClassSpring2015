@@ -41,7 +41,7 @@ class PhoneTypeService implements IService {
          $this->DAO = $DAO;
      }
 
-    public function __construct( IDAO $PhoneTypeDAO, $validator  ) {
+    public function __construct( IDAO $PhoneTypeDAO, IService $validator  ) {
         $this->setDAO($PhoneTypeDAO);
         $this->setValidator($validator);
     }
