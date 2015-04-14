@@ -70,7 +70,6 @@ use Exception;
             }
             
             if ( $controller instanceof IController ) {
-                $this->getLog()->log('instanceof?'.$class_name);
                 return $controller->execute($scope);
             }
                         
