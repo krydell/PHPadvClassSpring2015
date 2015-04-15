@@ -6,6 +6,7 @@
  *
  * @author Gabriel Forti
  */
+
 //namespace kvasile\week2;
 
 class Validator {

@@ -1,4 +1,6 @@
 <?php
+
+
 //namespace kvasile\week2;
 
 function load_lib($base) {
