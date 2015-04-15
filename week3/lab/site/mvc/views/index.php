@@ -14,6 +14,7 @@
         
         ?>
         
-        <a href="test">test page</a>
+        <a href="phonetype">Phone Type</a>
+        <a href="phone">Phone</a>
     </body>
 </html>
