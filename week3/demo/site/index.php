@@ -183,29 +183,29 @@ use Exception;
         $_scope = new Scope();
         $_scope->util = new Util();
         $_validator = new Validator();
+        
+        $_phoneTypemodel = new PhoneTypeModel();
+        $_phonemodel = new PhoneModel();
+        
+        $_phoneTypeDAO = new PhoneTypeDAO($_pdo->getDB(), $_phoneTypemodel, $_log);
+        $_phoneDAO = new PhoneDAO($_pdo->getDB(), $_phonemodel, $_log);
+        
+        
+        $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
+        $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator, $_phonemodel);
+        
+        
         //http://php.net/manual/en/functions.anonymous.php
 
         $index->addDIController('index', function() {            
             return new \APP\controller\IndexController();
         })
-        ->addDIController('phonetype', function() use ($_pdo,$_validator,$_log ) {
-            $_model = new PhoneTypeModel();
-            $_DAO = new PhoneTypeDAO($_pdo->getDB(), $_model, $_log);
-            $_service = new PhoneTypeService($_DAO, $_validator);
-            return new \APP\controller\PhonetypeController($_service, $_model);
+        ->addDIController('phonetype', function() use ($_phoneTypeService ) { 
+            return new \APP\controller\PhonetypeController($_phoneTypeService);
         })
         
-        ->addDIController('phone', function() use ($_pdo,$_validator,$_log ) {
-            $_phonemodel = new PhoneModel();
-            $_phoneTypemodel = new PhoneTypeModel();
-            
-            $_phoneDAO = new PhoneDAO($_pdo->getDB(), $_phonemodel, $_log);
-            $_phoneTypeDAO = new PhoneTypeDAO($_pdo->getDB(), $_phoneTypemodel, $_log);
-            
-            $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator);
-            $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator);
-            
-            return new \APP\controller\PhoneController($_phoneService, $_phonemodel);
+        ->addDIController('phone', function() use ($_phoneService ) {                        
+            return new \APP\controller\PhoneController($_phoneService);
         })
         ->addDIController('test', function(){
             $_service = new TestService();

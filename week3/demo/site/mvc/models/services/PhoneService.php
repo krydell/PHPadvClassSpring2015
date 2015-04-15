@@ -16,8 +16,8 @@ class PhoneService implements IService {
     protected $phoneDAO;
     protected $phoneTypeService;
     protected $validator;
-
-    function getValidator() {
+    protected $model;
+                function getValidator() {
         return $this->validator;
     }
 
@@ -40,11 +40,21 @@ class PhoneService implements IService {
     function setPhoneTypeService(IService $service) {
         $this->phoneTypeService = $service;
     }
+    
+    
+    function getModel() {
+        return $this->model;
+    }
 
-    public function __construct( IDAO $phoneDAO, IService $phoneTypeService, IService $validator  ) {
+    function setModel(IModel $model) {
+        $this->model = $model;
+    }
+
+        public function __construct( IDAO $phoneDAO, IService $phoneTypeService, IService $validator, IModel $model  ) {
         $this->setPhoneDAO($phoneDAO);
         $this->setPhoneTypeService($phoneTypeService);
         $this->setValidator($validator);
+        $this->setModel($model);
     }
     
     
@@ -104,6 +114,10 @@ class PhoneService implements IService {
         return false;
     }
     
+    
+     public function getNewPhoneModel() {
+        return clone $this->getModel();
+    }
     
     
 }

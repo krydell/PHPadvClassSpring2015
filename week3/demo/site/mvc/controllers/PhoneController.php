@@ -15,13 +15,14 @@ class PhoneController extends BaseController implements IController {
    
     protected $service;
     
-    public function __construct( IService $PhoneService, IModel $model  ) {                
-        $this->service = $PhoneService;     
-        $this->data['model'] = $model;
+    public function __construct( IService $PhoneService  ) {                
+        $this->service = $PhoneService;  
     }
     
     public function execute(IService $scope) {
         $viewPage = 'phone';
+        
+        $this->data['model'] = $this->service->getNewPhoneModel();
         $this->data['model']->reset();
         
         if ( $scope->util->isPostRequest() ) {

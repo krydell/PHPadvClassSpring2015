@@ -20,14 +20,15 @@ use App\models\interfaces\IModel;
 
 class PhonetypeController extends BaseController implements IController {
        
-    public function __construct( IService $PhoneTypeService, IModel $model  ) {                
+    public function __construct( IService $PhoneTypeService ) {                
         $this->service = $PhoneTypeService;     
-        $this->data['model'] = $model;
+        
     }
 
 
     public function execute(IService $scope) {
                 
+        $this->data['model'] = $this->service->getNewPhoneTypeModel();
         $this->data['model']->reset();
         $viewPage = 'phonetype';
         
