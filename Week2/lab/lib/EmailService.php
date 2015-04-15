@@ -96,10 +96,11 @@ class EmailService {
         } else {
             
             
-             echo '<table border="1" cellpadding="5"><tr><th>E-mail</th><th>Active</th><th></th><th></th></tr>';
+             echo '<table border="1" cellpadding="5"><tr><th>E-mail</th><th>Type</th><th>Active</th><th></th><th></th></tr>';
              foreach ($emails as $value) {
                 echo '<tr>';
                 echo '<td>', $value->getEmail(),'</td>';
+                echo '<td>',$value->getEmailtype(),'</td>';
                 echo '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
                 echo '<td><a href=update.php?id=',$value->getEmailid(),'>Update</a></td>';
                 echo '<td><a href=delete.php?id=',$value->getEmailid(),'>Delete</a></td>';
