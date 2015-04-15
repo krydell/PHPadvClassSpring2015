@@ -51,7 +51,7 @@
         }
         
         
-        $emailid = $emailModel->getEmailtypeid();
+        //$emailid = $emailModel->getEmailtypeid();
         $email = $emailModel->getEmail();
         $active = $emailModel->getActive();  
               
