@@ -194,6 +194,19 @@ use Exception;
             $_service = new PhoneTypeService($_DAO, $_validator);
             return new \APP\controller\PhonetypeController($_service, $_model);
         })
+        
+        ->addDIController('phone', function() use ($_pdo,$_validator,$_log ) {
+            $_phonemodel = new PhoneModel();
+            $_phoneTypemodel = new PhoneTypeModel();
+            
+            $_phoneDAO = new PhoneDAO($_pdo->getDB(), $_phonemodel, $_log);
+            $_phoneTypeDAO = new PhoneTypeDAO($_pdo->getDB(), $_phoneTypemodel, $_log);
+            
+            $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator);
+            $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator);
+            
+            return new \APP\controller\PhoneController($_phoneService, $_phonemodel);
+        })
         ->addDIController('test', function(){
             $_service = new TestService();
             return new \APP\controller\TestController($_service);

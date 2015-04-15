@@ -10,9 +10,11 @@ namespace App\models\services;
 use App\models\interfaces\IDAO;
 use App\models\interfaces\IService;
 use App\models\interfaces\IModel;
+
 class PhoneService implements IService {
     
-    protected $DAO;
+    protected $phoneDAO;
+    protected $phoneTypeService;
     protected $validator;
 
     function getValidator() {
@@ -23,18 +25,81 @@ class PhoneService implements IService {
         $this->validator = $validator;
     }                
      
-    function getDAO() {
-        return $this->DAO;
+    function getPhoneDAO() {
+        return $this->phoneDAO;
     }
 
-    function setDAO(IDAO $DAO) {
-        $this->DAO = $DAO;
+    function setPhoneDAO(IDAO $DAO) {
+        $this->phoneDAO = $DAO;
     }
     
-     public function __construct( IDAO $phoneDAO, IService $validator  ) {
-        $this->setDAO($phoneTypeDAO);
+    function getPhoneTypeService() {
+        return $this->phoneTypeService;
+    }
+
+    function setPhoneTypeService(IService $service) {
+        $this->phoneTypeService = $service;
+    }
+
+    public function __construct( IDAO $phoneDAO, IService $phoneTypeService, IService $validator  ) {
+        $this->setPhoneDAO($phoneDAO);
+        $this->setPhoneTypeService($phoneTypeService);
         $this->setValidator($validator);
     }
+    
+    
+    public function getAllPhoneTypes() {       
+        return $this->getPhoneTypeService()->getAllRows();   
+        
+    }
+    
+     public function getAllPhones() {       
+        return $this->getPhoneDAO()->getAllRows();   
+        
+    }
+    
+    public function create(IModel $model) {
+        
+        if ( count($this->validate($model)) === 0 ) {
+            return $this->getPhoneDAO()->create($model);
+        }
+        return false;
+    }
+    
+    
+    public function validate( IModel $model ) {
+        $errors = array();
+       
+        if ( !$this->getValidator()->phoneIsValid($model->getPhone()) ) {
+            $errors[] = 'Phone is invalid';
+        }
+               
+        if ( !$this->getValidator()->activeIsValid($model->getActive()) ) {
+            $errors[] = 'Phone active is invalid';
+        }
+       
+        
+        return $errors;
+    }
+    
+    
+    public function read($id) {
+        return $this->getPhoneDAO()->read($id);
+    }
+    
+    public function delete($id) {
+        return $this->getPhoneDAO()->delete($id);
+    }
+    
+    
+     public function update(IModel $model) {
+        
+        if ( count($this->validate($model)) === 0 ) {
+            return $this->getPhoneDAO()->update($model);
+        }
+        return false;
+    }
+    
     
     
 }
