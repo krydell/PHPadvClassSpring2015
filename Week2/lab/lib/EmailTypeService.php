@@ -101,7 +101,7 @@ class EmailTypeService {
                 echo '<tr>';
                 echo '<td>', $value->getEmailtype(),'</td>';
                 echo '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
-                echo '<td><a href=update.php?emailtypeid=',$value->getEmailtypeid(),'>Update</a></td>';
+                echo '<td><a href=emailtype-update.php?emailtypeid=',$value->getEmailtypeid(),'>Update</a></td>';
                 echo '<td><a href=delete.php?emailtypeid=',$value->getEmailtypeid(),'>Delete</a></td>';
                 echo '</tr>' ;
             }

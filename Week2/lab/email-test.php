@@ -72,7 +72,6 @@
         
         ?>
         
-        
          <h3>Add E-mail</h3>
         <form action="#" method="post">
             <label>E-mail:</label>            
@@ -117,5 +116,8 @@
             }
          ?>
             </table>
+         
+         
+         <p><a href="emailtype-update.php">Update e-mail types</a></p>
     </body>
 </html>
