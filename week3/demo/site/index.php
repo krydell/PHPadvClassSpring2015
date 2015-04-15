@@ -48,7 +48,7 @@ use Exception;
         public function run(IService $scope) {  
             $page = $this->getPage();
             if ( !$this->runController($page,$scope) ) {
-                throw new PageNotFoundException('Unsafe page "' . $page . '" requested');               
+                throw new ControllerFailedException('Controller for page "' . $page . '" failed');               
             }          
         }
         
