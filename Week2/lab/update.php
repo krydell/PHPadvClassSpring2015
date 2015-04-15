@@ -25,7 +25,11 @@
         
         $emailTypeDAO = new EmailTypeDAO($db);        
         $emailTypes = $emailTypeDAO->getAllRows();        
-         
+        
+        $emailtypeModel = new EmailTypeModel();         
+  
+        
+        
         if ( $util->isPostRequest() ) {
             //echo 'is post request';         
             
@@ -33,11 +37,17 @@
             $emailid = filter_input(INPUT_GET, 'id');
             //$emailModel = $emailDAO->getById($emailid);  
             $active = $_POST['active']; 
+
+            
             //echo $active;
                       
         } else {
             $emailid = filter_input(INPUT_GET, 'id');
             $emailModel = $emailDAO->getById($emailid);
+
+            $emailTypeid = $emailModel->getEmailtypeid();        
+            
+            
         }
         
         
@@ -52,6 +62,8 @@
             //echo 'idexisit';
             $emailService->saveForm();
         }
+        
+
         //else { echo 'noexist!'; }
         
         
