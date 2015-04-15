@@ -23,9 +23,14 @@
         $emailModel = new EmailModel();
          
         if ( $util->isPostRequest() ) {
+            //echo 'is post request';         
             
             $emailModel->map(filter_input_array(INPUT_POST));
-                       
+            $emailid = filter_input(INPUT_GET, 'id');
+            //$emailModel = $emailDAO->getById($emailid);  
+            $active = $_POST['active']; 
+            //echo $active;
+                      
         } else {
             $emailid = filter_input(INPUT_GET, 'id');
             $emailModel = $emailDAO->getById($emailid);
@@ -39,9 +44,11 @@
         
         $emailService = new EmailService($db, $util, $validator, $emailDAO, $emailModel);
         
-        if ( $emailDAO->idExisit($emailModel->getEmailtypeid()) ) {
+        if ( $emailDAO->idExisit(INPUT_GET, 'id') ) {
+            //echo 'idexisit';
             $emailService->saveForm();
         }
+        //else { echo 'noexist!'; }
         
         
         ?>

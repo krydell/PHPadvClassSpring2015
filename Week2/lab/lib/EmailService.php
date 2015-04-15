@@ -36,9 +36,9 @@ class EmailService {
         } else {
             
             if (  $this->_EmailDAO->save($this->_EmailModel) ) {
-                echo 'Email Added/updated';
+                echo 'Email added/updated.';
             } else {
-                echo 'Email could not be added Added';
+                echo 'Email could not be added.';
             }
            
         }

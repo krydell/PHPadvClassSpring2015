@@ -50,9 +50,9 @@ class EmailDAO implements IDAO {
     public function idExisit($id) {
         
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT phoneid FROM phone WHERE phoneid = :phoneid");
+        $stmt = $db->prepare("SELECT emailid FROM email WHERE emailid = :emailid");
          
-        if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
             return true;
         }
          return false;
