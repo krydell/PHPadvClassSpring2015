@@ -9,7 +9,6 @@ namespace APP\controller;
 
 use App\models\interfaces\IController;
 use App\models\interfaces\IService;
-use App\models\interfaces\IModel;
 
 class PhoneController extends BaseController implements IController {
    
