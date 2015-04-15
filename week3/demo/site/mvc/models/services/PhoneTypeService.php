@@ -51,6 +51,10 @@ class PhoneTypeService implements IService {
         return $this->getDAO()->getAllRows($limit, $offset);
     }
     
+    public function idExist($id) {
+        return $this->getDAO()->idExisit($id);
+    }
+    
     public function read($id) {
         return $this->getDAO()->read($id);
     }

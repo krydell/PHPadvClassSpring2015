@@ -69,6 +69,10 @@ class PhoneService implements IService {
     
     public function validate( IModel $model ) {
         $errors = array();
+        
+        if ( !$this->getPhoneTypeService()->idExist($model->getPhonetypeid()) ) {
+            $errors[] = 'Phone Type is invalid';
+        }
        
         if ( !$this->getValidator()->phoneIsValid($model->getPhone()) ) {
             $errors[] = 'Phone is invalid';

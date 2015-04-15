@@ -22,7 +22,7 @@ class PhoneDAO extends BaseDAO implements IDAO {
     }
     
     
-    protected function idExisit($id) {
+    public function idExisit($id) {
                 
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT phoneid FROM phone WHERE phoneid = :phoneid");

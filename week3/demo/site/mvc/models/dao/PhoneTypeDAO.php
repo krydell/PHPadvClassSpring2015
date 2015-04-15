@@ -20,7 +20,7 @@ class PhoneTypeDAO extends BaseDAO implements IDAO {
         $this->setLog($log);
     }
           
-    protected function idExisit($id) {
+    public function idExisit($id) {
         
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM phonetype WHERE phonetypeid = :phonetypeid");
