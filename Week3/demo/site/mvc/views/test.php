@@ -12,9 +12,6 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
-        
-        phpinfo();
-        
         ?>
     </body>
 </html>
