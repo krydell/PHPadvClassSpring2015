@@ -9,6 +9,8 @@
  *
  * @author User
  */
+//namespace kvasile\week2;
+
 class EmailTypeService {
    
     private $_errors = array();
@@ -36,9 +38,9 @@ class EmailTypeService {
         } else {
             
             if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
-                echo 'Email Added/updated';
+                echo '<font color="green">E-mail type added/updated.</font>';
             } else {
-                echo 'Email could not be added Added';
+                echo '<font color="red">E-mail type could not be added/updated.</font>';
             }
            
         }

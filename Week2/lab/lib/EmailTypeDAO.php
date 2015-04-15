@@ -12,6 +12,7 @@
  *
  * @author User
  */
+
 //namespace kvasile\week2;
 
 class EmailTypeDAO implements IDAO {

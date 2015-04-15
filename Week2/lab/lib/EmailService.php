@@ -9,6 +9,8 @@
  *
  * @author User
  */
+//namespace kvasile\week2;
+
 class EmailService {
    
     private $_errors = array();
@@ -36,9 +38,9 @@ class EmailService {
         } else {
             
             if (  $this->_EmailDAO->save($this->_EmailModel) ) {
-                echo 'Email added/updated.';
+                echo '<font color="green">Email added/updated.</font>';
             } else {
-                echo 'Email could not be added.';
+                echo '<font color="red">Email could not be added.</font>';
             }
            
         }
@@ -87,7 +89,6 @@ class EmailService {
     }
     
     public function displayEmailsActions() {        
-       // Notice in the previous function I should have called get all rows
         
         $emails = $this->_EmailDAO->getAllRows();
         

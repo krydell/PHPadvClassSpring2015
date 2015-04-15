@@ -1,6 +1,4 @@
 <?php
-
-
 //namespace kvasile\week2;
 
 function load_lib($base) {
@@ -10,6 +8,7 @@ function load_lib($base) {
      
     include 'lib/'.$class . '.php';
     
-
+  
 };
+
 spl_autoload_register('load_lib');

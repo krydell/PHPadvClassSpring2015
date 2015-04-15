@@ -1,4 +1,5 @@
-<?php include './bootstrap.php'; ?>
+<?php //namespace kvasile\week2;
+include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,6 +50,8 @@
         
         
          <h3>Update E-mail Type</h3>
+         <p><a href="email-test.php">Add E-mail </a> | <a href="update.php">Update E-mail</a> | <a href="emailtype-update.php">Update e-mail types</a></p>
+         
         <form action="#" method="post">
              <input type="hidden" name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
             <label>Email Type:</label> 
@@ -56,9 +59,8 @@
             <br /><br />
             <label>Active:</label>
             <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
-             <br /><br />
             <input type="submit" value="Submit" />
-        </form>
+        </form><br/>
          
          
          <?php         

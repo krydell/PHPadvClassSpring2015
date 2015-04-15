@@ -4,6 +4,8 @@
  * The class to conncet to the database.
  */
 //
+//namespace kvasile\week2;
+
 
 class DB {
     
