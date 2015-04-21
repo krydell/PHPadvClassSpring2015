@@ -101,6 +101,7 @@ use Exception;
             $className = end( $baseName );     
             
             $folders = array(   "mvc".DIRECTORY_SEPARATOR."controllers",
+                                "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."helpers",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."dao",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."do",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."interfaces",
