@@ -191,7 +191,7 @@ use Exception;
                 
         $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
         
-       
+        $_emailtypeservice = new EmailtypeService();
         
         //http://php.net/manual/en/functions.anonymous.php
 
@@ -201,7 +201,9 @@ use Exception;
         ->addDIController('phonetype', function() use ($_phoneTypeService ) { 
             return new \APP\controller\PhonetypeController($_phoneTypeService);
         })
-        
+        ->addDIController('emailtype', function() use ($_emailtypeservice ) { 
+            return new \APP\controller\EmailtypeController($_emailtypeservice);
+        })
         
         ;
         // run application!
