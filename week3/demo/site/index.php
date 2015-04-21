@@ -195,6 +195,7 @@ use Exception;
         $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
         $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator, $_phonemodel);
         
+         $_testService = new TestService();
         
         //http://php.net/manual/en/functions.anonymous.php
 
@@ -208,9 +209,8 @@ use Exception;
         ->addDIController('phone', function() use ($_phoneService ) {                        
             return new \APP\controller\PhoneController($_phoneService);
         })
-        ->addDIController('test', function(){
-            $_service = new TestService();
-            return new \APP\controller\TestController($_service);
+        ->addDIController('test', function()  use ($_testService ){           
+            return new \APP\controller\TestController($_testService);
         })
         
         ;
