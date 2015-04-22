@@ -22,9 +22,9 @@ For my final project, I would like to create a simple �virtual pet� web site
 		x What color
 	~ Read its current information (~2 hours)
 		x Have a page that displays all of a user�s pets and their stats
-		x Update its statistics through buttons (~2-3 hours)
-		x Clicking �feed� buttons that would improve a �happiness� variable, etc.
-	~ and delete it from the database (~1-2 hours)
+		x Update its statistics (~2-3 hours)
+		x Clicking �feed� buttons that would increase  a �happiness� variable, etc. (~2-3 hours)
+                x and delete it from the database (~1-2 hours)
 
 - Debug code, check for errors (~3-4 hours)
 
