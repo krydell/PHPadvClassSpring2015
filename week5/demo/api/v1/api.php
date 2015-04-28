@@ -78,7 +78,8 @@ final class Index {
     })
     ;
     // run application!
-    echo $_restServer->authorized();
+    //echo $_restServer->authorized();
+    echo $_restServer->process();
 }
     
 runPage();
