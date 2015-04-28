@@ -103,7 +103,7 @@ class EmailService {
                 echo '<td>', $value->getEmail(),'</td>';
                 echo '<td>',$value->getEmailtype(),'</td>';
                 echo '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
-                echo '<td><a href=update.php?id=',$value->getEmailid(),'>Update</a></td>';
+                echo '<td><a href=update-emails.php?id=',$value->getEmailid(),'>Update</a></td>';
                 echo '<td><a href=delete.php?id=',$value->getEmailid(),'>Delete</a></td>';
                 echo '</tr>' ;
             }
