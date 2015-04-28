@@ -11,6 +11,8 @@ include './bootstrap.php'; ?>
     <body>
         <?php
         
+        $feedback="";
+        
         $dbConfig = array(
             "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
             "DB_USER"=>'root',
@@ -60,7 +62,9 @@ include './bootstrap.php'; ?>
   </tr>
   
   <tr>
-      <td class="tg-y8od">       
+      <td class="tg-y8od"> 
+          
+          <div id="feedback"><?php echo $feedback; ?></div>          
 
         <form action="#" method="post" style="padding:25px 25px 25px 25px;">
              <input type="hidden" name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
@@ -81,6 +85,8 @@ include './bootstrap.php'; ?>
       </td>
 
   </tr>
-</table>                
+</table>   
+        <footer style="margin-top:50px;bottom:0px;color:grey;text-align:center;">Lab 3 - Advanced PHP SE396.57</footer>           
+        
     </body>
 </html>

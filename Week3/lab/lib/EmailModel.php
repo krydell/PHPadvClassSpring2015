@@ -93,7 +93,7 @@ class EmailModel implements IModel {
     
     
    
-    public function map(array $values) {
+    public function map(array $values) { // To map values to the model.
         
         if ( array_key_exists('emailid', $values) ) {
             $this->setEmailid($values['emailid']);

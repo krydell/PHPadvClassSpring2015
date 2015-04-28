@@ -38,9 +38,9 @@ class EmailTypeService {
         } else {
             
             if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
-                echo '<font color="green">E-mail type added/updated.</font>';
+                echo '<div style="background-color:green;color:white;text-align:center;">E-mail type added/updated.</div>';
             } else {
-                echo '<font color="red">E-mail type could not be added/updated.</font>';
+                echo '<div style="background-color:red;color:white;text-align:center;">E-mail type not added/updated.</div>';
             }
            
         }

@@ -42,9 +42,9 @@ class EmailTypeDAO implements IDAO {
     }
         
     
-    public function getById($id) {
+    public function getById($id) { // Find by ID
          
-         $model = new EmailTypeModel(); // this creates a dependacy, how can we fix this
+         $model = new EmailTypeModel(); 
          $db = $this->getDB();
          
          $stmt = $db->prepare("SELECT * FROM emailtype WHERE emailtypeid = :emailtypeid");
@@ -83,7 +83,7 @@ class EmailTypeDAO implements IDAO {
     }
     
     
-    public function delete($id) {
+    public function delete($id) { // Delete an email type
           
          $db = $this->getDB();         
          $stmt = $db->prepare("Delete FROM emailtype WHERE emailtypeid = :emailtypeid");
@@ -97,7 +97,7 @@ class EmailTypeDAO implements IDAO {
      
     
     
-    public function getAllRows() {
+    public function getAllRows() { 
        
         $values = array();         
         $db = $this->getDB();               

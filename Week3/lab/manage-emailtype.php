@@ -12,6 +12,7 @@ include './bootstrap.php'; ?>
         
         <?php
         
+        $feedback="";        
         $dbConfig = array(
             "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
             "DB_USER"=>'root',
@@ -24,21 +25,48 @@ include './bootstrap.php'; ?>
         $validator = new Validator();
         $emailTypeDAO = new EmailTypeDAO($db);
         $emailtypeModel = new EmailTypeModel();
+        
+        $emailtypeid = $emailtypeModel->getEmailtypeid();
+        $emailType = filter_input(INPUT_POST, 'emailtype');  
+        $active = filter_input(INPUT_POST, 'active');   
+ 
          
         if ( $util->isPostRequest() ) {
             
-            $emailtypeModel->map(filter_input_array(INPUT_POST));
+                $validator = new Validator(); 
+                $errors = array();
+                
+                if ( !$validator->emailTypeIsValid($emailType) ) {
+                     $errors[] = 'E-mail type,' .$emailType. ' invalid.';
+                }      
+                if ( !$validator->activeIsValid($active) ) {
+                     $errors[] = 'Active is invalid.';
+                }            
+                
+                if ( count($errors) > 0 ) {
+                    foreach ($errors as $value) {
+                        echo '<p style="background-color:maroon;color:white;text-align:center;">',$value,'</p>';
+                    }
+                } else {
+                    $emailtypeModel = new EmailTypeModel();
+                    
+                    $emailtypeModel->map(filter_input_array(INPUT_POST));
+                    
+                   // var_dump($emailtypeModel);
+                    if ( $emailTypeDAO->save($emailtypeModel) ) {
+                        echo '<div style="background-color:green;color:white;text-align:center;">E-mail type added/updated.</div>';
+                    } else {
+                        echo '<div style="background-color:red;color:white;text-align:center;">E-mail type not added/updated.</div>';
+                    }
+                                      
+                }            
+            
+            //$emailtypeModel->map(filter_input_array(INPUT_POST));
                        
         } else {
             $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
             $emailtypeModel = $emailTypeDAO->getById($emailtypeid);
         }
-        
-        
-        $emailtypeid = $emailtypeModel->getEmailtypeid();
-        $emailType = $emailtypeModel->getEmailtype();
-        $active = $emailtypeModel->getActive();  
-              
         
         $emailTypeService = new EmailTypeService($db, $util, $validator, $emailTypeDAO, $emailtypeModel);
         
@@ -63,6 +91,8 @@ include './bootstrap.php'; ?>
   
   <tr>
       <td class="tg-y8od">
+          
+          <div id="feedback"><?php echo $feedback; ?></div>          
      
         <form action="#" method="post" style="padding:25px 25px 25px 25px;">
              <input type="hidden" name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
@@ -83,6 +113,7 @@ include './bootstrap.php'; ?>
       </td>
 
   </tr>
-</table>               
+</table>   
+        <footer style="margin-top:50px;bottom:0px;color:grey;text-align:center;">Lab 3 - Advanced PHP SE396.57</footer>   
     </body>
 </html>

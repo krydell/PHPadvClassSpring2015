@@ -20,40 +20,24 @@ include 'bootstrap.php'; ?>
         $pdo = new DB($dbConfig);
         $db = $pdo->getDB();
         
-         $util = new Util();        
+        $util = new Util();        
         $validator = new Validator();        
         
-         $emailTypeDAO = new EmailTypeDAO($db);
-         $emailDAO = new EmailDAO($db);
+        $emailTypeDAO = new EmailTypeDAO($db);
+        $emailDAO = new EmailDAO($db);
         $emailModel = new EmailModel();
          
          
         $email = filter_input(INPUT_POST, 'email');
         $emailTypeid = filter_input(INPUT_POST, 'emailtypeid');
         $active = filter_input(INPUT_POST, 'active');
+
+        $emailTypes = $emailTypeDAO->getAllRows();
         
-
-
-         
-         $emailTypes = $emailTypeDAO->getAllRows();
-        
-
-         
-         if(isset($_GET['id'])){
-                echo 'ok';
-                    $emailModel = $emailDAO->getById('id');
-                    $emailid = filter_input(INPUT_GET, 'id');
-                //$emailModel = $emailDAO->getById($emailid);  
-                    $active = $emailModel->getActive();
-                    echo $active; echo "that was active";
-                    //echo $active + "is activre";
-
-            
-         }
          
           if ( $util->isPostRequest() ) {
                             
-               $validator = new Validator(); 
+                $validator = new Validator(); 
                 $errors = array();
                 if( !$validator->emailIsValid($email) ) {
                     $errors[] = 'E-mail is invalid.';
@@ -71,7 +55,7 @@ include 'bootstrap.php'; ?>
                 
                 if ( count($errors) > 0 ) {
                     foreach ($errors as $value) {
-                        echo '<p>',$value,'</p>';
+                        echo '<p style="background-color:maroon;color:white;text-align:center;">',$value,'</p>';
                     }
                 } else {
                     
@@ -82,9 +66,9 @@ include 'bootstrap.php'; ?>
                     
                    // var_dump($emailtypeModel);
                     if ( $emailDAO->save($emailModel) ) {
-                        echo 'E-mail added.';
+                        echo '<div style="background-color:green;color:white;text-align:center;">E-mail added/updated.</div>';
                     } else {
-                        echo 'E-mail not added.';
+                        echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
                     }
                     
                 }
@@ -106,6 +90,7 @@ include 'bootstrap.php'; ?>
   
   <tr>
       <td class="tg-y8od">
+          
           
         <form action="#" method="post" style="padding:25px 25px 25px 25px;">
             <label>E-mail:</label>            
@@ -156,8 +141,6 @@ include 'bootstrap.php'; ?>
   </tr>
 </table>        
 
-         
-         
-        
+        <footer style="margin-top:50px;bottom:0px;color:grey;text-align:center;">Lab 3 - Advanced PHP SE396.57</footer>        
     </body>
 </html>

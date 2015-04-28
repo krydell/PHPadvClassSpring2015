@@ -26,7 +26,7 @@ class EmailService {
         $this->_EmailDAO = $emailDAO;
         $this->_EmailModel = $emailModel;
     }
-    public function saveForm() {        
+    public function saveForm() {    // To save an e-mail into the database.    
         if ( !$this->_Util->isPostRequest() ) {
             return false;
         }
@@ -38,15 +38,15 @@ class EmailService {
         } else {
             
             if (  $this->_EmailDAO->save($this->_EmailModel) ) {
-                echo '<font color="green">Email added/updated.</font>';
+                echo '<div style="background-color:green;color:white;text-align:center;">E-mail added/updated.</div>';
             } else {
-                echo '<font color="red">Email could not be added.</font>';
+                echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
             }
            
         }
         
     }
-    public function validateForm() {
+    public function validateForm() { // See if form works.
        
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
@@ -61,7 +61,7 @@ class EmailService {
     }
     
     
-    public function displayErrors() {
+    public function displayErrors() { // output errors.
        
         foreach ($this->_errors as $value) {
             echo '<p>',$value,'</p>';
@@ -69,26 +69,12 @@ class EmailService {
          
     }
     
-    public function hasErrors() {        
+    public function hasErrors() {        // Count all errors.
         return ( count($this->_errors) > 0 );        
     }
-    public function displayEmails() {        
-       // this doesn't make good use of the getallrows function in my DAO
-        $stmt = $this->_DB->prepare("SELECT * FROM email");
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-           
-            foreach ($results as $value) {
-                echo '<p>', $value['email'], '</p>';
-            }
-        } else {
-            echo '<p>No Data</p>';
-        }
-        
-    }
     
-    public function displayEmailsActions() {        
+    
+    public function displayEmailsActions() { // Display the table for e-mails.       
         
         $emails = $this->_EmailDAO->getAllRows();
         
