@@ -114,7 +114,7 @@ class RestProxy implements IService {
     
     public function getOrigin() {
         // Requests from the same server don't have a HTTP_ORIGIN header
-        return ( isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : $_SERVER['SERVER_NAME'] );        
+        return ( NULL !== filter_input(INPUT_SERVER, 'HTTP_ORIGIN') ? filter_input(INPUT_SERVER, 'HTTP_ORIGIN') : filter_input(INPUT_SERVER, 'SERVER_NAME') );        
     }
      
 }
