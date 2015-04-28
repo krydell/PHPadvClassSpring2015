@@ -12,9 +12,9 @@
  * @author GFORTI
  */
 
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\ILogging;
+use API\models\interfaces\ILogging;
 
 class FileLogging implements ILogging {
     //put your code here

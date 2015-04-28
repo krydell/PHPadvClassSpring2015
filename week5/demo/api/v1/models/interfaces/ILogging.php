@@ -11,7 +11,7 @@
  * @author GForti
  */
 
-namespace App\models\interfaces;
+namespace API\models\interfaces;
 
 interface ILogging {
         

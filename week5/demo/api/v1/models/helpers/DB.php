@@ -5,10 +5,10 @@
  * @author GForti
  */
 
-namespace App\models\services;
-use App\models\interfaces\ILogging;
+namespace API\models\services;
+use API\models\interfaces\ILogging;
 use \PDO;
-use App\models\interfaces\IService;
+use API\models\interfaces\IService;
 
 class DB implements IService {
     

@@ -12,7 +12,7 @@
  * @author GFORTI
  */
 
-namespace App\models\services;
+namespace API\models\services;
 
 
 class RestServerModel extends BaseModel {

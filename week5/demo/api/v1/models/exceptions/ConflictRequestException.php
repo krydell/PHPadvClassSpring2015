@@ -5,7 +5,7 @@
  *
  * @author User
  */
-namespace App\models\services;
+namespace API\models\services;
 
 use Exception;
 class ConflictRequestException extends Exception {}

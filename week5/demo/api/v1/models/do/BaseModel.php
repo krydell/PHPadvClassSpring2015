@@ -12,9 +12,9 @@
  * @author User
  */
 
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\IModel;
+use API\models\interfaces\IModel;
 
 abstract class BaseModel implements IModel {
     

@@ -6,9 +6,9 @@
  * @author User
  */
 
-namespace App\models\services;
-use \App\models\interfaces\IModel;
-use App\models\interfaces\ILogging;
+namespace API\models\services;
+use API\models\interfaces\IModel;
+use API\models\interfaces\ILogging;
 use \PDO;
 
 abstract class BaseDAO {

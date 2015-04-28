@@ -11,7 +11,7 @@
  *
  * @author User
  */
-namespace App\models\interfaces;
+namespace API\models\interfaces;
 
 interface IModel {
     public function reset();

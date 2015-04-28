@@ -5,7 +5,7 @@
  *
  * @author User
  */
-namespace App\models\interfaces;
+namespace API\models\interfaces;
 interface IRequest {
    
     public function POST(IModel $model);

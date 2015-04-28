@@ -6,9 +6,9 @@
  * @author User
  */
 
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\IService;
+use API\models\interfaces\IService;
 
 class RestProxy implements IService {
     

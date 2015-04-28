@@ -6,11 +6,11 @@
  * @author User
  */
 
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\IRequest;
-use App\models\interfaces\IService;
-use App\models\interfaces\IModel;
+use API\models\interfaces\IRequest;
+use API\models\interfaces\IService;
+use API\models\interfaces\IModel;
 
 
 class PhonetypeRequest implements IRequest {

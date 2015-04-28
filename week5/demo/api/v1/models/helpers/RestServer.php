@@ -6,11 +6,12 @@
  * @author User
  */
 
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\IService;
-use App\models\interfaces\IModel;
-use App\models\interfaces\ILogging;
+use API\models\interfaces\IService;
+use API\models\interfaces\IModel;
+use API\models\interfaces\ILogging;
+use API\models\interfaces\IRequest;
 
 use Exception;
 
@@ -98,7 +99,9 @@ class RestServer implements IService {
         if (array_key_exists($class_name,$this->DI)) {                
             $Request = $this->DI[$class_name](); 
             
-            $data = $Request->{$this->model->getVerb()}($this->model);            
+            if ( $Request instanceof IRequest ) {
+                $data = $Request->{$this->model->getVerb()}($this->model);
+            }
             $status = 200;
         } 
         

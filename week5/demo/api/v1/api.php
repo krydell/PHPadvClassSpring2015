@@ -1,5 +1,5 @@
 <?php
-namespace App\models\services;
+namespace API\models\services;
 
 final class Index {
     
