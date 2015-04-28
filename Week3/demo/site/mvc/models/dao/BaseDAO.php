@@ -1,23 +1,29 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  * Description of BaseDAO
  *
  * @author User
  */
+
 namespace App\models\services;
 use \App\models\interfaces\IModel;
 use App\models\interfaces\ILogging;
 use \PDO;
+
 abstract class BaseDAO {
     
     protected $DB = null;
     protected $model;
     protected $log = null;
+
+
     protected function setDB(PDO $DB) {        
         $this->DB = $DB;
     }
@@ -29,6 +35,7 @@ abstract class BaseDAO {
     protected function getModel() {
         return $this->model;
     }
+
     protected function setModel(IModel $model) {
         $this->model = $model;
     }
@@ -36,6 +43,7 @@ abstract class BaseDAO {
     protected function getLog() {
         return $this->log;
     }
+
     protected function setLog(ILogging $log) {
         if ( $log instanceof ILogging) {
             $this->log = $log;
@@ -68,6 +76,7 @@ abstract class BaseDAO {
         
         if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             foreach ($results as $value) {
                $model = clone $this->getModel();
                $model->reset()->map($value);
@@ -88,16 +97,20 @@ abstract class BaseDAO {
      
      
      public function find($column = "", $search = "", $table = "") {
+
         $values = array();
         if ( empty($table) || empty($column) || empty($search) ) {         
              return $values;
          }
         $db = $this->getDB();
+
         $stmt = $db->prepare("SELECT * FROM $table WHERE $column LIKE :search");
         
         $search = '%'.$search.'%';
+
         if ($stmt->execute(array(':search' => $search)) && $stmt->rowCount() > 0) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             foreach ($results as $value) {
                $model = clone $this->getModel();
                $model->reset()->map($value);
@@ -108,7 +121,9 @@ abstract class BaseDAO {
            //log($db->errorInfo() .$stmt->queryString ) ;
            
         }  
+
         return $values;
     }
 */
+
 }

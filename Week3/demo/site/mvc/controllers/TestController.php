@@ -3,7 +3,7 @@
 /**
  * Description of TestController
  *
- * @author 001314368
+ * @author GFORTI
  */
 
 namespace APP\controller;
@@ -11,16 +11,32 @@ namespace APP\controller;
 use App\models\interfaces\IController;
 use App\models\interfaces\IService;
 
+
+
 class TestController extends BaseController implements IController {
-    //put your code here
     
-    public function execute(IService $scope) {
+    protected $service;
     
-        $this->data['test1'] = 'hello';
-        $this->data['test2'] = 'world';
+    public function __construct( IService $TestService ) {                
+        $this->service = $TestService;     
         
-        $scope->view = $this->data;
-        $page = 'test';
-        $this->view($page, $scope);
     }
+    
+      public function execute(IService $scope) {
+          
+          if ( $scope->util->isPostRequest() ) {
+               $this->data['email'] = filter_input(INPUT_POST, 'email');
+               
+               $this->data['emailvalid'] = $this->service->validateForm($this->data['email']);
+               
+          }
+          
+          $this->data['test1'] = 'hello';
+          $this->data['test2'] = 'world';
+          
+          $scope->view = $this->data;
+          $page = 'test';
+          return $this->view($page, $scope);          
+      }
+    
 }

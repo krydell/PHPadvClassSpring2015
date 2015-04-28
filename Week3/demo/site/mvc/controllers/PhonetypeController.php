@@ -1,27 +1,33 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  * Description of PhonetypeController
  *
  * @author User
  */
+
 namespace APP\controller;
+
 use App\models\interfaces\IController;
-use App\models\services\Scope;
 use App\models\interfaces\IService;
-use App\models\interfaces\IModel;
+
 class PhonetypeController extends BaseController implements IController {
        
-    public function __construct( IService $PhoneTypeService, IModel $model  ) {                
+    public function __construct( IService $PhoneTypeService ) {                
         $this->service = $PhoneTypeService;     
-        $this->data['model'] = $model;
+        
     }
-    public function execute(Scope $scope) {
+
+
+    public function execute(IService $scope) {
                 
+        $this->data['model'] = $this->service->getNewPhoneTypeModel();
         $this->data['model']->reset();
         $viewPage = 'phonetype';
         
