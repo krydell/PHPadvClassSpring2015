@@ -72,8 +72,7 @@ include './bootstrap.php'; ?>
         
         
          <h3>Update E-mail</h3>
-         <p><a href="email-test.php">Add E-mail </a> | <a href="update.php">Update E-mail</a> | <a href="emailtype-update.php">Update e-mail types</a></p>
-         
+         <p><a href="email-test.php">Add E-mail </a> | <a href="update.php">Update E-mail</a> | <a href="emailtype-update.php">Update e-mail types</a></p>         
         <form action="#" method="post">
              <input type="hidden" name="emailid" value="<?php echo $emailid; ?>" />
             <label>Email:</label> 

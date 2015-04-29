@@ -63,9 +63,9 @@ include './bootstrap.php'; ?>
                     
                    // var_dump($emailtypeModel);
                     if ( $emailDAO->save($emailModel) ) {
-                        echo 'E-mail added.';
+                        echo '<div style="background-color:green;color:white;text-align:center;">E-mail added/updated.</div>';
                     } else {
-                        echo 'E-mail not added.';
+                        echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
                     }
                     
                 }

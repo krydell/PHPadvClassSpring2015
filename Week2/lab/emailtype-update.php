@@ -59,7 +59,7 @@ include './bootstrap.php'; ?>
             <br /><br />
             <label>Active:</label>
             <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Update" />
         </form><br/>
          
          
