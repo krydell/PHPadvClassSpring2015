@@ -60,7 +60,6 @@ include './bootstrap.php'; ?>
   <tr>
       <td class="tg-qwer"><a href="manage-email.php">Manage E-mails </a> | <a href="manage-emailtype.php">Manage E-mail Types</a></td>
   </tr>
-  
   <tr>
       <td class="tg-y8od"> 
           <div style="font-size:16px;font-weight:bold;padding-left:30px;padding-top:10px;">Update Existing</div>          
@@ -78,8 +77,7 @@ include './bootstrap.php'; ?>
          
          
          <?php         
-             $emailTypeService->displayEmailsActions();
-                          
+             $emailTypeService->displayEmailsActions();           
          ?>
           
       </td>
