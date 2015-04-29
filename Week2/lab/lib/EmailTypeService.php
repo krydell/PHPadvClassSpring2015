@@ -38,15 +38,14 @@ class EmailTypeService {
         } else {
             
             if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
-                echo '<div style="background-color:green;font-color:white;text-align:center;">E-mail type added/updated.</div>';
+                echo '<div style="background-color:green;color:white;text-align:center;">E-mail type added/updated.</div>';
             } else {
-                echo '<div style="background-color:red;font-color:white;text-align:center;">E-mail type not added/updated.</div>';
+                echo '<div style="background-color:red;color:white;text-align:center;">E-mail type not added/updated.</div>';
             }
            
         }
+        
     }
-    
-
     public function validateForm() {
        
         if ( $this->_Util->isPostRequest() ) {                
@@ -104,7 +103,7 @@ class EmailTypeService {
                 echo '<tr>';
                 echo '<td>', $value->getEmailtype(),'</td>';
                 echo '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
-                echo '<td><a href=emailtype-update.php?emailtypeid=',$value->getEmailtypeid(),'>Update</a></td>';
+                echo '<td><a href=update-emailtype.php?emailtypeid=',$value->getEmailtypeid(),'>Update</a></td>';
                 echo '<td><a href=delete.php?emailtypeid=',$value->getEmailtypeid(),'>Delete</a></td>';
                 echo '</tr>' ;
             }

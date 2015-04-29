@@ -11,6 +11,8 @@ include './bootstrap.php'; ?>
     <body>
         <?php
         
+        $feedback="";
+        
         $dbConfig = array(
             "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
             "DB_USER"=>'root',
@@ -47,12 +49,24 @@ include './bootstrap.php'; ?>
         
         
         ?>
-        
-        
-         <h3>Update E-mail Type</h3>
-         <p><a href="email-test.php">Add E-mail </a> | <a href="update.php">Update E-mail</a> | <a href="emailtype-update.php">Update e-mail types</a></p>
-         
-        <form action="#" method="post">
+ <table class="tg" style="table-layout: fixed; width: 50%; margin-top: 2%;">
+<colgroup>
+<col style="width: 689px">
+</colgroup>
+  <tr>
+    <th class="tg-fasd">
+  <h3>Update E-mail Type</h3></th>
+  </tr>
+  <tr>
+      <td class="tg-qwer"><a href="manage-email.php">Manage E-mails </a> | <a href="manage-emailtype.php">Manage E-mail Types</a></td>
+  </tr>
+  
+  <tr>
+      <td class="tg-y8od"> 
+          <div style="font-size:16px;font-weight:bold;padding-left:30px;padding-top:10px;">Update Existing</div>          
+          <div id="feedback"><?php echo $feedback; ?></div>          
+
+        <form action="#" method="post" style="padding:25px 25px 25px 25px;">
              <input type="hidden" name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
             <label>Email Type:</label> 
             <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
@@ -67,6 +81,12 @@ include './bootstrap.php'; ?>
              $emailTypeService->displayEmailsActions();
                           
          ?>
-         <p><a href="email-test.php">Go back.</a></p>                 
+          
+      </td>
+
+  </tr>
+</table>   
+        <footer style="margin-top:50px;bottom:0px;color:grey;text-align:center;">Lab 2 - Advanced PHP SE396.57</footer>           
+        
     </body>
 </html>

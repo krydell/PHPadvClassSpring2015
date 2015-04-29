@@ -34,7 +34,7 @@ class EmailDAO implements IDAO {
 
     public function getById($id) {
          
-         $model = new EmailModel(); // this creates a dependacy, how can we fix this
+         $model = new EmailModel(); 
          $db = $this->getDB();
          
          $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"

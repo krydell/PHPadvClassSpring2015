@@ -21,16 +21,26 @@ include './bootstrap.php'; ?>
             // get values from URL
             $emailid = filter_input(INPUT_GET, 'id');
             
+            $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
+            
             if ( NULL !== $emailid ) {
                $emailDAO = new EmailDAO($db);
                
                if ( $emailDAO->delete($emailid) ) {
-                   echo 'E-mail has been deleted.';                  
-               }                
-        
+                   
+                   header( 'Location: ./manage-email.php' ) ;
+          
+               }               
             }
             
-            
+            if ( NULL !== $emailtypeid ) {
+               $emailtypeDAO = new EmailTypeDAO($db);
+               
+               if ( $emailtypeDAO->delete($emailtypeid) ) {
+                   
+                   header( 'Location: ./manage-emailtype.php' ) ;
+               }                
+            }             
              echo '<p><a href="',filter_input(INPUT_SERVER, 'HTTP_REFERER'),'">Go back</a></p>';
         
         ?>
