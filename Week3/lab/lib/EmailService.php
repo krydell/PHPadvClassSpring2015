@@ -38,6 +38,7 @@ class EmailService {
         } else {
             
             if (  $this->_EmailDAO->save($this->_EmailModel) ) {
+                header( 'Location: update-emails.php' ) ;
                 echo '<div style="background-color:green;color:white;text-align:center;">E-mail added/updated.</div>';
             } else {
                 echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
@@ -51,10 +52,10 @@ class EmailService {
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
             if( !$this->_Validator->emailIsValid($this->_EmailModel->getEmail()) ) {
-                 $this->_errors[] = 'Email Type is invalid';
+                 $this->_errors[] = 'E-mail is invalid.';
             } 
             if( !$this->_Validator->activeIsValid($this->_EmailModel->getActive()) ) {
-                 $this->_errors[] = 'Active is invalid';
+                 $this->_errors[] = 'Active is invalid.';
             } 
         }
          
@@ -64,7 +65,7 @@ class EmailService {
     public function displayErrors() { // output errors.
        
         foreach ($this->_errors as $value) {
-            echo '<p>',$value,'</p>';
+            echo '<div style="background-color:red;color:white;text-align:center;">',$value,'</div>';
         }
          
     }

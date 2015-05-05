@@ -114,6 +114,6 @@ include './bootstrap.php'; ?>
 
   </tr>
 </table>   
-        <footer style="margin-top:50px;bottom:0px;color:grey;text-align:center;">Lab 3 - Advanced PHP SE396.57</footer>   
+        <footer style="margin-top:50px;bottom:0px;color:grey;text-align:center;">Lab 2 - Advanced PHP SE396.57</footer>   
     </body>
 </html>

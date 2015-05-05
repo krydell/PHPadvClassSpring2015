@@ -1,0 +1,28 @@
+
+body {
+    font-family: "Tahoma";
+    font-size: 12px;
+    background-color: #333333;
+}
+
+table
+{    margin-left:auto; 
+    margin-right:auto;}
+
+h3
+{ font-size: 20px; color: #ffffff; }
+
+.linkbar
+{
+    text-align:justify;
+    letter-spacing: 1px;
+    font-color: red;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-fasd{background-color:#65d4d9; background-image:url('http://i.imgur.com/bq8WQx2.png');}
+.tg .tg-y8od{background-color:#eaeaea;}
+.tg .tg-qwer{background-color:#ACC1C5; letter-spacing: 1.5px; text-align: center; text-transform: uppercase;}
+.tg a{text-decoration: none}
