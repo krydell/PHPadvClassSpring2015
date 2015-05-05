@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">        
         <meta charset="UTF-8">
         <title></title>
     </head>
@@ -17,6 +16,5 @@
         
         <a href="phonetype">Phone Type</a>
         <a href="phone">Phone</a>
-        <a href="emailtype">Emailtype</a>
     </body>
 </html>

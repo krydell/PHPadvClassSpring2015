@@ -11,7 +11,13 @@
  */
 //namespace kvasile\week2;
 
-class EmailService {
+namespace App\models\services;
+
+use App\models\interfaces\IDAO;
+use App\models\interfaces\IService;
+use App\models\interfaces\IModel;
+
+class EmailService implements IService {
    
     private $_errors = array();
     private $_Util;
