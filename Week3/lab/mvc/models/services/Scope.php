@@ -7,7 +7,7 @@
 /**
  * Description of Scope
  *
- * @author GForti
+ * 
  */
 namespace App\models\services;
 use App\models\interfaces\IService;

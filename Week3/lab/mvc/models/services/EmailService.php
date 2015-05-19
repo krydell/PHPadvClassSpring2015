@@ -2,7 +2,7 @@
 /**
  * Description of EmailService
  *
- * @author GFORTI
+ * 
  */
 
 namespace App\models\services;

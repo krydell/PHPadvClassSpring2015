@@ -2,7 +2,7 @@
 /**
  * Description of EmailDAO
  *
- * @author GFORTI
+ * 
  */
 
 namespace App\models\services;
