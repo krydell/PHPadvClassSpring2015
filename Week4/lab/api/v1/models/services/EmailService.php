@@ -24,7 +24,11 @@ class EmailService implements IService {
     function setValidator($validator) {
         $this->validator = $validator;
     }                
-     
+     function getDAO() {
+         return $this->emailDAO;
+     }
+
+    
     function getEmailDAO() {
         return $this->emailDAO;
     }
@@ -118,6 +122,9 @@ class EmailService implements IService {
      public function getNewEmailModel() {
         return clone $this->getModel();
     }
-    
+    public function idExist($id) {
+        return $this->getDAO()->idExisit($id);
+    }
+        
     
 }

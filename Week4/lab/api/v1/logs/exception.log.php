@@ -16,3 +16,6 @@
 [555bb96fd4df0]	[exception]	[05-20-2015 12:30am]	New Email Type Not Created
 [555bbab714c7e]	[exception]	[05-20-2015 12:35am]	0 ID Email Type Not Deleted
 [555bbe898716e]	[exception]	[05-20-2015 12:51am]	3 ID does not exist
+[555bc5b49acd6]	[exception]	[05-20-2015 1:22am]	0 ID does not exist
+[555bc5bbe0f12]	[exception]	[05-20-2015 1:22am]	New Email Type Not Created
+[555bc5c80d83b]	[exception]	[05-20-2015 1:22am]	0 ID Email Type Not Deleted
