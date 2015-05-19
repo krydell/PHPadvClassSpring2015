@@ -3,7 +3,7 @@
 /**
  * Description of EmailtypeController
  *
- * @author GFORTI
+ * 
  */
 namespace APP\controller;
 

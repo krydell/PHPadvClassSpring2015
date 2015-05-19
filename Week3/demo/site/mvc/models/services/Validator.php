@@ -2,7 +2,7 @@
 /**
  * Description of Validator
  *
- * @author GForti
+ * 
  */
 namespace App\models\services;
 use App\models\interfaces\IService;

@@ -2,7 +2,7 @@
 /**
  * Description of PhoneService
  *
- * @author GFORTI
+ * 
  */
 
 namespace API\models\services;

@@ -27,7 +27,7 @@
 /**
  * Description of DB
  *
- * @author GForti
+ * 
  */
 namespace App\models\services;
 use App\models\interfaces\ILogging;

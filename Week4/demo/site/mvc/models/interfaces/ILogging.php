@@ -8,7 +8,7 @@
 
 /**
  *
- * @author GForti
+ * 
  */
 
 namespace App\models\interfaces;

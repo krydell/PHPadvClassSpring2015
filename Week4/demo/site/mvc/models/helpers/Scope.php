@@ -9,7 +9,7 @@
 /**
  * Description of Scope
  *
- * @author GForti
+ * 
  */
 namespace App\models\services;
 

@@ -3,7 +3,7 @@
 /**
  * Description of PhoneModel
  *
- * @author GFORTI
+ * 
  */
 
 namespace API\models\services;

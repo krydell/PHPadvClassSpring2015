@@ -23,7 +23,6 @@ abstract class BaseDAO {
     protected $model;
     protected $log = null;
 
-
     protected function setDB(PDO $DB) {        
         $this->DB = $DB;
     }

@@ -2,7 +2,7 @@
 /**
  * Description of PhoneDAO
  *
- * @author GFORTI
+ * 
  */
 
 namespace App\models\services;

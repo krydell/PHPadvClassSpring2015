@@ -2,7 +2,7 @@
 /**
  * Description of PhoneController
  *
- * @author GFORTI
+ * 
  */
 
 namespace APP\controller;

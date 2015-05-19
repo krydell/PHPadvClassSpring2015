@@ -3,7 +3,7 @@
 /**
  * Description of EmailtypeService
  *
- * @author GFORTI
+ * 
  */
 
 namespace App\models\services;

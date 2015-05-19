@@ -9,7 +9,7 @@
 /**
  * Description of Log
  *
- * @author GFORTI
+ * 
  */
 
 namespace API\models\services;

@@ -9,7 +9,7 @@
 /**
  * Description of RestAPIModel
  *
- * @author GFORTI
+ * 
  */
 
 namespace API\models\services;

@@ -2,7 +2,7 @@
 /**
  * Description of DB
  *
- * @author GForti
+ * 
  */
 
 namespace API\models\services;
