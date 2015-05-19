@@ -31,9 +31,9 @@
         
         if ( isset($scope->view['updated']) ) {
             if( $scope->view['updated'] ) {        
-                 echo 'Email Updated';
+                 echo 'E-mail type updated!';
             } else {
-                 echo 'Email NOT Updated';
+                 echo 'E-mail type NOT updated!';
             }                 
         }
         

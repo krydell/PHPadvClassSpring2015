@@ -37,11 +37,11 @@
              }
              
              if ( isset($scope->view['saved']) && $scope->view['saved'] ) {
-                  echo 'Email Added';
+                  echo 'E-mail type added!';
              }
              
              if ( isset($scope->view['deleted']) && $scope->view['deleted'] ) {
-                  echo 'Email deleted';
+                  echo 'E-mail type deleted!';
              }
              
          }
@@ -54,7 +54,7 @@
         
         <h2>Add email type</h2>
         <form action="#" method="post">
-            <label>Email Type:</label> 
+            <label>E-mail Type:</label> 
             <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
             <input type="number" max="1" min="0" name="Active" value="<?php echo $active; ?>" />
             <input type="hidden" name="action" value="create" />
