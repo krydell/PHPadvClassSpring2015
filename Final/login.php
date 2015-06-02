@@ -5,6 +5,7 @@
     
     <head>
 <?php
+
 include 'bootstrap.php';
 // Inialize session
 
@@ -14,11 +15,21 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Retrieve username and password from database according to user's input
-    $stmt = $db->prepare("SELECT * FROM login WHERE (`username` = :username) and (`password` = :password)");
 
-    $result = $stmt->execute(array(':username'=>$_POST['username'],':password'=>$_POST['password']));
-    $num_rows = $stmt->rowCount();
-    // Check username and password match
+    
+        $dbConfig = array(
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_USER"=>'root',
+            "DB_PASSWORD"=>''
+        );
+        
+        $pdo = new DB($dbConfig);
+        $db = $pdo->getDB();
+        
+        $util = new Util();        
+        $validator = new Validator();            
+    
+   /* 
     if ( $num_rows > 0) {
     // Set username session variable
     $_SESSION['username'] = $_POST['username'];
@@ -28,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
     // Jump to login page
     header('Location: index.php');
-    }
+    }*/
 } 
 
 ?>
