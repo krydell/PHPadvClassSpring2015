@@ -5,6 +5,8 @@ pets int,
 points int);
 
 
+
+
 CREATE TABLE Pets
 (pet_id int NOT NULL,
 pet_name varchar(30),

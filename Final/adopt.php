@@ -36,36 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      }
    }
    
-   if (empty($_POST["email"])) {
-     $emailErr = "Email is required";
+   if (empty($_POST["pet"])) {
+     $petErr = "Species is required";
    } else {
-     $email = test_input($_POST["email"]);
-     // check if e-mail address is well-formed
-     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $emailErr = "Invalid email format"; 
-     }
-   }
-     
-   if (empty($_POST["website"])) {
-     $website = "";
-   } else {
-     $website = test_input($_POST["website"]);
-     // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-       $websiteErr = "Invalid URL"; 
-     }
-   }
-
-   if (empty($_POST["comment"])) {
-     $comment = "";
-   } else {
-     $comment = test_input($_POST["comment"]);
-   }
-
-   if (empty($_POST["gender"])) {
-     $genderErr = "Gender is required";
-   } else {
-     $gender = test_input($_POST["gender"]);
+     $pet = test_input($_POST["pet"]);
    }
 }
 
@@ -103,10 +77,10 @@ function test_input($data) {
                <td><img src="http://pngimg.com/upload/fish_PNG1157.png" width="100"/></td>
            </tr>
            <tr>
-               <td width="100" align="center"><input type="radio" name="gender" <?php if (isset($pet) && $pet=="Dog") echo "checked";?>  value="Dog"></td>
-               <td width="100" align="center"><input type="radio" name="gender" <?php if (isset($pet) && $pet=="Cat") echo "checked";?>  value="Cat"></td>
-               <td width="100" align="center"><input type="radio" name="gender" <?php if (isset($pet) && $pet=="Rat") echo "checked";?>  value="Rat"></td>
-               <td width="100" align="center"><input type="radio" name="gender" <?php if (isset($pet) && $pet=="Fish") echo "checked";?>  value="Fish"></td>
+               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Dog") echo "checked";?>  value="Dog"></td>
+               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Cat") echo "checked";?>  value="Cat"></td>
+               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Rat") echo "checked";?>  value="Rat"></td>
+               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Fish") echo "checked";?>  value="Fish"></td>
            </tr>
        </table>
        <table>

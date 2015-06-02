@@ -28,7 +28,7 @@ include 'bootstrap.php'
 }*/
 
 $username = "Username";
-
+$password = "Password";
  
 ?>
 <table class="tg" style="table-layout: fixed; width: 50%; margin-top: 2%;">
@@ -44,12 +44,14 @@ $username = "Username";
           <a href="profile.php">Profile</a> ★ <a href="adopt.php">Adopt</a> ★ <a href="login.php">Log-in</a> ★ <a href="logout.php">Log-out</a> </td>
   </tr>
   
+
+  
   <tr>
       <td class="tg-y8od" style="font-size:16px;">
-       <img src="http://pngimg.com/upload/dog_PNG2453.png" width="30%" align="right"><br/>                    
-       &nbsp;&nbsp;Welcome to the Virtual Pet Center, a project made for Gabe Forti's Advanced PHP class!  <br/><br/>
-       &nbsp;&nbsp;To get started, register for an account, and then head over to the adopt page. After you adopt your pet, you can go to your profile to interact with it. 
-       
+  <h1>Your Profile</h1>
+       <img src="http://pngimg.com/upload/cat_PNG93.png" width="50%" align="right"><br/>                    
+       <p>Username: <input type="text" name="name" value="<?php echo $username;?>" readonly></p>
+       <p>Password: <input type="password" name="pass" value="<?php echo $password;?>" readonly></p>     
 
           
       </td>
