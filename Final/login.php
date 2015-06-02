@@ -10,18 +10,39 @@ include 'bootstrap.php';
 // Inialize session
 
 session_start();
-
+$error = "";
+$user = "";
+$pw = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $error = "";
+    $user = "";
+    $pw = "";
+
+    
+    
     // Retrieve username and password from database according to user's input
     if(isset($_POST['user'])){ $user = $_POST['user']; } // take all the inputted fields
-    if(isset($_POST['pass'])){ $pw = $_POST['pw']; }
+    else{$error = "Input a username.";}
+        
+    if(isset($_POST['pw'])){ $pw = $_POST['pw'];}
+    else{$error = "Input a password.";}
     
-    if($user == "Username")
+    if($error != "")
+    { 
+        echo $error;
+        return; }
+    
+        
+    if($user == "testme")
     { $_SESSION['username'] = $user;
       header("Location: index.php");
     }
+    
+    
+    
+    
    /* 
     if ( $num_rows > 0) {
     // Set username session variable
@@ -57,13 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <tr>
       <td class="tg-y8od" style="font-size:16px;">
           <h1>Login / Register</h1>
-          &nbsp;To log-in, input your credentials and hit login. If your do not have an account, you may create your login credentials by inputting them here and clicking submit all the same. Alternatively, to register, click the registration button!<br/><br/>
-          
+          &nbsp;To log-in, input your credentials and hit submit. If your do not have an account, you may create your login credentials by inputting them here and clicking submit all the same. Alternatively, to register, click the registration button!<br/><br/>
+          <br/>The sample account is named "testme" and doesn't need a password.<br/><br/>
 <form method="POST">
 
-    <table><tr align="center">
+    <table>
     <trtr align="center"> <td>UserName</td><td> <input type="text" name="user"></td> </tr>
-    <trtr align="center"> <td>Password</td><td> <input type="password" name="pass"></td> </tr>
+    <trtr align="center"> <td>Password</td><td> <input type="password" name="pw"></td> </tr>
         </table>
     <table>
     <tr> <td><input id="button" type="submit" name="submit" value="Submit"> </td> </tr> </form>

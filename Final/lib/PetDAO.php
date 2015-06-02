@@ -16,7 +16,7 @@
  
 //namespace kvasile\week2; 
  
-class EmailDAO implements IDAO {
+class PetDAO implements IDAO {
     
     private $DB = null;
     public function __construct( PDO $db ) {        
@@ -37,8 +37,8 @@ class EmailDAO implements IDAO {
          $model = new EmailModel(); 
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
-                 . " FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid WHERE emailid = :emailid");
+         $stmt = $db->prepare("SELECT pets.pet_id, pets.pet_name, pets.species, pets.happy, pets.hungry, pets.owner"
+                 . " FROM pets LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid WHERE emailid = :emailid");
          
          if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -62,22 +62,24 @@ class EmailDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $values = array( ":email" => $model->getEmail(),
-                          ":active" => $model->getActive(),
-                          ":emailtypeid" => $model->getEmailtypeid(),
+         $values = array( ":pet_name" => $model->getPetname(),
+                          ":owner" => $model->getOwner(),
+                          ":pet" => $model->getSpecies(),
+                          ":happy" => 10,
+                          ":hungry" => 100,
              
                     );
          
                 
-         if ( $this->idExisit($model->getEmailid()) ) {
+         if ( $this->idExisit($model->getPetId()) ) {
 
-             $values[":emailid"] = $model->getEmailid();
-             $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid,  active = :active, lastupdated = now() WHERE emailid = :emailid");
+             $values[":pet_id"] = $model->getPetId();
+             $stmt = $db->prepare("UPDATE pets SET pet_name = :pet_name, happy = :happy, hungry = :hungry WHERE pet_id = :pet_id");
          } else {  
-             $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
+             $stmt = $db->prepare("INSERT INTO pets SET SET pet_name = :pet_name, happy = :happy, hungry = :hungry, species = :pet");
          }
          
-          
+    
          if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
             return true;
          }
@@ -89,9 +91,9 @@ class EmailDAO implements IDAO {
     public function delete($id) {
           
          $db = $this->getDB();         
-         $stmt = $db->prepare("Delete FROM email WHERE emailid = :emailid");
+         $stmt = $db->prepare("Delete FROM pets WHERE pet_id = :pet_id");
          
-         if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
+         if ( $stmt->execute(array(':pet_id' => $id)) && $stmt->rowCount() > 0 ) {
              return true;
          }
          
@@ -104,13 +106,13 @@ class EmailDAO implements IDAO {
        
         $values = array();         
         $db = $this->getDB();               
-        $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
-                 . " FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid");
+        $stmt = $db->prepare("SELECT pets.pet_name, pets.species, pets.hungry, pets.happy"
+                 . " FROM pets, login"); // WHERE login.username = pets.owner
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($results as $value) {
-               $model = new EmailModel();
+               $model = new PetModel();
                $model->reset()->map($value);
                $values[] = $model;
             }

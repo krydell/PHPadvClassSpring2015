@@ -24,7 +24,7 @@ class PetModel implements IModel {
     private $owner;
 
     
-    function getPetid() {
+    function getPetId() {
         return $this->pet_id;
     }
     function getPetname() {
@@ -82,27 +82,27 @@ class PetModel implements IModel {
     public function map(array $values) { // To map values to the model.
         
         if ( array_key_exists('pet_id', $values) ) {
-            $this->setPetid($values['emailid']);
+            $this->setPetid($values['pet_id']);
         }
         
-        if ( array_key_exists('pet_name', $values) ) {
-            $this->setPetname($values['email']);
+        if ( array_key_exists('name', $values) ) {
+            $this->setPetname($values['name']);
         }
         
-        if ( array_key_exists('species', $values) ) {
-            $this->setSpecies($values['emailtypeid']);
+        if ( array_key_exists('pet', $values) ) {
+            $this->setSpecies($values['pet']);
         }
         
         if ( array_key_exists('happy', $values) ) {
-            $this->setHappy($values['emailtype']);
+            $this->setHappy($values['happy']);
         }
         
         if ( array_key_exists('hunger', $values) ) {
-            $this->setHunger($values['emailtypeactive']);
+            $this->setHunger($values['hunger']);
         }
         
-        if ( array_key_exists('owner', $values) ) {
-            $this->setOwner($values['emailtypeactive']);
+        if ( array_key_exists('username', $values) ) {
+            $this->setOwner($values['username']);
         }
 
         return $this;

@@ -23,6 +23,7 @@ if (!isset($_SESSION['username']))
 { 
     header("Location: login.php");
 }
+else {$username = $_SESSION['username'];}
     
 // define variables and set to empty values
 /*
@@ -34,21 +35,47 @@ if (!$_SESSION['username'])
 $nameErr = $petErr = "";
 $name = $pet = "";
 
+        $dbConfig = array(
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_USER"=>'root',
+            "DB_PASSWORD"=>''
+        );
+        
+        $pdo = new DB($dbConfig);
+        $db = $pdo->getDB();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["name"])) {
-     $nameErr = "Name is required";
+     $nameErr = "<font color=\"red\">Name is required</font>.";
    } else {
      $name = test_input($_POST["name"]);
      // check if name only contains letters and whitespace
      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-       $nameErr = "Only letters and white space allowed"; 
+       $nameErr = "<font color=\"red\">Only letters and white space allowed</font>"; 
      }
    }
    
    if (empty($_POST["pet"])) {
-     $petErr = "Species is required";
+     $petErr = "<font color=\"red\">Pet choice is required.</font>";
    } else {
      $pet = test_input($_POST["pet"]);
+   }
+   
+   if($petErr == "" && $nameErr == "")
+   {
+
+       
+                      
+$petModel = new PetModel();
+$petDAO = new PetDAO($db);                    
+$petModel->map(filter_input_array(INPUT_POST));
+                    
+                   // var_dump($emailtypeModel);
+if ( $petDAO->save($petModel) ) {
+                        echo '<div style="background-color:green;color:white;text-align:center;">E-mail added/updated.</div>';
+                    } else {
+                        echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
+                    }    
    }
 }
 
@@ -79,26 +106,30 @@ function test_input($data) {
        <h1>Adoption Center</h1>
        &nbsp;&nbsp;This is the adoption center. If you wish to register a pet, here is the place to do it!  <br/><br/>
        &nbsp;&nbsp;To adopt a pet, select the kind of animal you want, select a name, and click "Go!".<br/><br/>
-       <table><tr>
+       <table style="border:none;"><tr><td width="442"><span class="error"><?php echo $petErr;?></span></td></tr></table>
+       <table>
+           
+       <form action="#" method="post">    
+           <tr>
                <td><img src="http://pngimg.com/upload/dog_PNG2407.png" width="100"/></td>
                <td><img src="http://pngimg.com/upload/cat_PNG100.png" width="100"/></td>
                <td><img src="http://pngimg.com/upload/rat_mouse_PNG2455.png" width="100"/></td>
                <td><img src="http://pngimg.com/upload/fish_PNG1157.png" width="100"/></td>
            </tr>
            <tr>
-               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Dog") echo "checked";?>  value="Dog"></td>
-               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Cat") echo "checked";?>  value="Cat"></td>
-               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Rat") echo "checked";?>  value="Rat"></td>
-               <td width="100" align="center"><input type="radio" name="species" <?php if (isset($pet) && $pet=="Fish") echo "checked";?>  value="Fish"></td>
+               <td width="100" align="center"><input type="radio" name="pet" <?php if (isset($pet) && $pet=="Dog") echo "checked";?>  value="Dog"></td>
+               <td width="100" align="center"><input type="radio" name="pet" <?php if (isset($pet) && $pet=="Cat") echo "checked";?>  value="Cat"></td>
+               <td width="100" align="center"><input type="radio" name="pet" <?php if (isset($pet) && $pet=="Rat") echo "checked";?>  value="Rat"></td>
+               <td width="100" align="center"><input type="radio" name="pet" <?php if (isset($pet) && $pet=="Fish") echo "checked";?>  value="Fish"></td>
            </tr>
        </table>
        <table>
            <tr>
                <td width="432" style="padding: 10px;text-align:center;">Pet Name: <input type="text" name="name" value="<?php echo $name;?>"><br/>
                    <span class="error"><?php echo $nameErr;?></span><br/><br/>
-               <input type="submit" name="submit" value="Go!"> </td>
+                   <form><input type="submit" name="submit" value="Go!"> </td>
            </tr></table>      
-
+</form>
           
       </td>
 
