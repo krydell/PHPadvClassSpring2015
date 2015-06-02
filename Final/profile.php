@@ -22,6 +22,14 @@ include 'bootstrap.php'
 <?php
 // define variables and set to empty values
 
+session_start();
+
+if (!isset($_SESSION['username']))
+{ 
+    header("Location: login.php");
+}
+    
+
 /*if (!$_SESSION['username'])
 {
     header("Location: login.php");

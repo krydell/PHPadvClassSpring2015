@@ -15,20 +15,13 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Retrieve username and password from database according to user's input
-
+    if(isset($_POST['user'])){ $user = $_POST['user']; } // take all the inputted fields
+    if(isset($_POST['pass'])){ $pw = $_POST['pw']; }
     
-        $dbConfig = array(
-            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
-            "DB_USER"=>'root',
-            "DB_PASSWORD"=>''
-        );
-        
-        $pdo = new DB($dbConfig);
-        $db = $pdo->getDB();
-        
-        $util = new Util();        
-        $validator = new Validator();            
-    
+    if($user == "Username")
+    { $_SESSION['username'] = $user;
+      header("Location: index.php");
+    }
    /* 
     if ( $num_rows > 0) {
     // Set username session variable

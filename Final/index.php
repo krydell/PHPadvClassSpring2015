@@ -18,6 +18,15 @@ include 'bootstrap.php'; ?>
 
 $welcomemsg="";
 
+session_start();
+
+if (isset($_SESSION['username']))
+{ 
+    $user = $_SESSION['username'];
+    $welcomemsg = "Hey, {$user}!";
+}
+    
+    
 ?>
         
         
@@ -38,7 +47,7 @@ $welcomemsg="";
       <td class="tg-y8od" style="font-size:16px;">
        <img src="http://pngimg.com/upload/dog_PNG2453.png" width="30%" align="right"><br/> 
        <h1>Welcome<i>!</i></h1>
-       <?php echo $welcomemsg; ?>
+       <?php echo $welcomemsg; ?><br/><br/>
        &nbsp;&nbsp;Welcome to the Virtual Pet Center, a project made for Gabe Forti's Advanced PHP class!  <br/><br/>
        &nbsp;&nbsp;To get started, register for an account, and then head over to the adopt page. After you adopt your pet, you can go to your profile to interact with it. 
        
