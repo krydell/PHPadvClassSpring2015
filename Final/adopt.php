@@ -115,7 +115,7 @@ function test_input($data) {
        <h1>Adoption Center</h1>
        &nbsp;&nbsp;This is the adoption center. If you wish to register a pet, here is the place to do it!  <br/><br/>
        &nbsp;&nbsp;To adopt a pet, select the kind of animal you want, select a name, and click "Go!".<br/><br/>
-       <table style="border:none;"><tr><td width="442"><span class="error"><?php echo $petErr;?></span></td></tr></table>
+       <table><tr><td width="442" style="border: none;text-align:center;"><span class="error"><?php echo $petErr;?></span></td></tr></table>
        <table>
            
        <form action="#" method="post">    
