@@ -41,7 +41,7 @@ else { $username = $_SESSION['username']; }
 
  
 
-        $dbConfig = array(
+        $dbConfig = array( // Database setup to interact with DB
             "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
             "DB_USER"=>'root',
             "DB_PASSWORD"=>''
@@ -99,10 +99,21 @@ else { $username = $_SESSION['username']; }
             echo $phoneTypes[2]->getPhonetype();
             */
 
-            foreach ($pets as $value) {
+            foreach ($pets as $value) { // Determine what image to display
+                if($value->getSpecies()=="Dog") // If species is a dog, show dog image
+                {echo '<p><img src="http://pngimg.com/upload/dog_PNG2407.png" width="100"/>';}
+                if($value->getSpecies()=="Cat") // Etc...
+                {echo '<p><img src="http://pngimg.com/upload/cat_PNG100.png" width="100"/>';}
+                if($value->getSpecies()=="Rat")
+                {echo '<p><img src="http://pngimg.com/upload/rat_mouse_PNG2455.png" width="100"/>';}
+                if($value->getSpecies()=="Fish")
+                {echo '<p><img src="http://pngimg.com/upload/fish_PNG1157.png" width="100"/>';}
+                // Then, echo the pet's statistics, and links to update and delete
                 echo '<p><b>Pet Name:</b> ',$value->getPetname(),'</p>';
                 echo '<p><b>Species:</b> ',$value->getSpecies(),'</p>';
+                echo '<a href="edit-pet.php?id=',$value->getPetID(),'">Rename ',$value->getPetname(), '</a> | ';
                 echo '<a href="delete-pet.php?id=',$value->getPetId(),'">Abandon ',$value->getPetname(), '</a>';
+
              }
            
             

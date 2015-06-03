@@ -144,7 +144,34 @@ class PetDAO implements IDAO {
         
         $stmt->closeCursor();         
          return $values;
+         
+       
      }
+
+    public function getSpecificPet($id) { 
+       
+        $values = array();         
+        $db = $this->getDB();               
+        $stmt = $db->prepare("SELECT * FROM pets WHERE pet_id = '$id'");
+        
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($results as $value) {
+               $model = new PetModel();
+               $model->reset()->map($value);
+               $values[] = $model;
+            }
+             
+        }   else {            
+           //log($db->errorInfo() .$stmt->queryString ) ;           
+        }  
+        
+        $stmt->closeCursor();         
+         return $values;
+         
+       
+     }     
+     
      
      
 }
