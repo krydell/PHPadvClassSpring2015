@@ -27,7 +27,7 @@ if (!isset($_SESSION['username']))
 else { $username = $_SESSION['username']; }
 
         
-             $dbConfig = array(
+             $dbConfig = array( // Set up DB
                     "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
                     "DB_USER"=>'root',
                     "DB_PASSWORD"=>''
@@ -44,18 +44,20 @@ else { $username = $_SESSION['username']; }
  
         $pets = $petDAO->getSpecificPet($pet_id);   
         
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   if (empty($_POST["name"])) {
-       header("Location: login.php");
-       echo 'No name entered!';
+if ($_SERVER["REQUEST_METHOD"] == "POST") { // If it's a post...
+   if (empty($_POST["petname"])) {
+       echo '<div style="text-align:center;background-color:red;">No name entered!</div>';
    }
    else {
-    $new_name = $_POST["name"];
+       
+    $new_name = $_POST["petname"];
+    
+    //echo $new_name;
        $query = "UPDATE pets SET pet_name = '$new_name' WHERE pet_id = '$pet_id'"; // add row
     
     $db->exec($query);       
     
-    echo 'Done!';
+    header("Location: profile.php");;
    }
 }
 
@@ -80,9 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <td class="tg-y8od" style="font-size:16px;">
        <img src="http://pngimg.com/upload/dog_PNG2453.png" width="30%" align="right"><br/> 
        <h1>Pet Renaming Page<i>!</i></h1>
+       <form action="#" method="post">
 <?php
        foreach ($pets as $value) {
-           echo '<p>Name: <input type="text" name="name" value=', $value->getPetName(),'>';
+           echo '<p>Name: <input type="text" name="petname" value=', $value->getPetName(),'>';
            echo '<p>Species: <input type="text" name="species" value=', $value->getSpecies(),' readonly>';
           
        }
@@ -91,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>*/
      ?>   
        <br/>
-        <form><input type="submit" name="submit" value="Rename!"> 
+       <input type="submit" name="submit" value="Rename!"> </form>
       </td>
 
   </tr>
