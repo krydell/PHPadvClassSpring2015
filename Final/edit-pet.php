@@ -80,20 +80,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // If it's a post...
   
   <tr>
       <td class="tg-y8od" style="font-size:16px;">
-       <img src="http://pngimg.com/upload/dog_PNG2453.png" width="30%" align="right"><br/> 
+       <img src="http://downloads.alteryx.com/Alteryx/Help/DynamicRename.png" width="30%" align="right"><br/> 
        <h1>Pet Renaming Page<i>!</i></h1>
        <form action="#" method="post">
 <?php
        foreach ($pets as $value) {
-           echo '<p>Name: <input type="text" name="petname" value=', $value->getPetName(),'>';
-           echo '<p>Species: <input type="text" name="species" value=', $value->getSpecies(),' readonly>';
+                if($value->getSpecies()=="Dog") // If species is a dog, show dog image
+                {echo '<p><img src="http://pngimg.com/upload/dog_PNG2407.png" width="100"/>';}
+                if($value->getSpecies()=="Cat") // Etc...
+                {echo '<p><img src="http://pngimg.com/upload/cat_PNG100.png" width="100"/>';}
+                if($value->getSpecies()=="Rat")
+                {echo '<p><img src="http://pngimg.com/upload/rat_mouse_PNG2455.png" width="100"/>';}
+                if($value->getSpecies()=="Fish")
+                {echo '<p><img src="http://pngimg.com/upload/fish_PNG1157.png" width="100"/>';}
+                echo '<p>Name: <input type="text" name="petname" value=', $value->getPetName(),'>';
+                echo '<p>Species: <input type="text" name="species" value=', $value->getSpecies(),' readonly>';
           
        }
        
        /*<p>Species: <input type="password" name="pass" value="<?php echo $value->getSpecies(); ?>" readonly></p>
 ?>*/
      ?>   
-       <br/>
+       <br/><br/>
        <input type="submit" name="submit" value="Rename!"> </form>
       </td>
 
