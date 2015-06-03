@@ -16,6 +16,10 @@ include 'bootstrap.php'; ?>
  
 <?php
 
+/*
+ * 
+ * Sessions begin
+ */
 
 session_start();
 
@@ -32,6 +36,8 @@ if (!$_SESSION['username'])
     header("Location: login.php");
 }*/
 
+
+
 $nameErr = $petErr = "";
 $name = $pet = "";
 
@@ -43,9 +49,12 @@ $name = $pet = "";
         
         $pdo = new DB($dbConfig);
         $db = $pdo->getDB();
-
+/*
+ * Upon posting...
+ * 
+ */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   if (empty($_POST["name"])) {
+   if (empty($_POST["name"])) { // Checks to make sure name isn't blank
      $nameErr = "<font color=\"red\">Name is required</font>.";
    } else {
      $name = test_input($_POST["name"]);
@@ -55,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      }
    }
    
-   if (empty($_POST["pet"])) {
+   if (empty($_POST["pet"])) { // Checks to make sure species isn't blank
      $petErr = "<font color=\"red\">Pet choice is required.</font>";
    } else {
      $pet = test_input($_POST["pet"]);
@@ -76,7 +85,7 @@ if ( $petDAO->save($petModel) ) {
                         echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
                     }    
    } */
-       
+       // If it all checks out, insert
     $query = "INSERT INTO pets
                  (pet_id, pet_name, species, happy, hungry, owner)
               VALUES

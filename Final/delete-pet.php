@@ -10,7 +10,12 @@ include './bootstrap.php'; ?>
     <body>
         <?php
         
-
+/*
+ * 
+ * Login session.
+ * 
+ * 
+ */
 session_start();
 $username = "Username";
 $password = "Password";
@@ -18,6 +23,13 @@ if (!isset($_SESSION['username']))
 { 
     header("Location: login.php");
 }
+
+/*
+ * 
+ * If your username is valid, pet will be deleted.
+ * 
+ */
+
 else { $username = $_SESSION['username']; }
         
              $dbConfig = array(
@@ -31,7 +43,10 @@ else { $username = $_SESSION['username']; }
             // get values from URL
             $pet_id = filter_input(INPUT_GET, 'id');
             
-            
+            /*
+             * If your pet_id isn't null, it will delete it from the database.
+             * 
+             */
             if ( NULL !== $pet_id ) {
                $petDAO = new PetDAO($db);
                
@@ -42,7 +57,7 @@ else { $username = $_SESSION['username']; }
                }               
             }
             
-             echo '<p><a href="',filter_input(INPUT_SERVER, 'HTTP_REFERER'),'">Go back</a></p>';
+            
         
         ?>
     </body>

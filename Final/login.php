@@ -23,7 +23,10 @@ $error = "";
 $user = "";
 $pw = "";
 
-
+/*
+ * Login begin.
+ * 
+ */
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

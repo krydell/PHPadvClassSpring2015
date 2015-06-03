@@ -16,7 +16,11 @@ include 'bootstrap.php'; ?>
 <?php
 // define variables and set to empty values
 
-
+/*
+ * 
+ * Sessions.
+ * 
+ */
 session_start();
 $username = "Username";
 $password = "Password";
@@ -25,7 +29,10 @@ if (!isset($_SESSION['username']))
     header("Location: login.php");
 }
 else { $username = $_SESSION['username']; }
-
+/*
+ * Setting up database.
+ * 
+ */
         
              $dbConfig = array( // Set up DB
                     "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
@@ -43,7 +50,11 @@ else { $username = $_SESSION['username']; }
         $petModel = new PetModel();
  
         $pets = $petDAO->getSpecificPet($pet_id);   
-        
+ /*
+  * 
+  * Upon being posted...
+  * 
+  */       
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // If it's a post...
    if (empty($_POST["petname"])) {
        echo '<div style="text-align:center;background-color:red;">No name entered!</div>';
@@ -51,6 +62,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // If it's a post...
    else {
        
     $new_name = $_POST["petname"];
+    /*
+     * Update the pet's name.
+     * 
+     */
+    
     
     //echo $new_name;
        $query = "UPDATE pets SET pet_name = '$new_name' WHERE pet_id = '$pet_id'"; // add row
