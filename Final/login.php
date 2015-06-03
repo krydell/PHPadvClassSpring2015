@@ -35,29 +35,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Retrieve username and password from database according to user's input
     if(isset($_POST['user'])){ $user = $_POST['user']; } // take all the inputted fields
-    else{$error = "Input a username.";}
+    else{$error = "Input a username.";} // Does not allow blank users
         
     if(isset($_POST['pw'])){ $pw = $_POST['pw'];}
-    else{$error = "Input a password.";}
+    else{$error = "Input a password.";} // Or blank PWs
     
     if($error != "")
-    { 
+    {  // If there's an error, show it
         echo $error;
         return; }
     
         
-    if($user == "testme")
+    if($user == "testme") // Testing acct before DB based logins come about
     { $_SESSION['username'] = $user;
       header("Location: index.php");
     }
     else
     {
-        
+        /*
     $query = "SELECT * FROM login";
 
     $count = $db->exec($query);
     
     echo "<center><b>{$count}, {$user}, {$pw} </b></center>";
+
+         * debug code above.         */
     
     }
     

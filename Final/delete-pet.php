@@ -10,6 +10,16 @@ include './bootstrap.php'; ?>
     <body>
         <?php
         
+
+session_start();
+$username = "Username";
+$password = "Password";
+if (!isset($_SESSION['username']))
+{ 
+    header("Location: login.php");
+}
+else { $username = $_SESSION['username']; }
+        
              $dbConfig = array(
                     "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
                     "DB_USER"=>'root',

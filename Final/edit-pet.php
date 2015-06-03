@@ -16,15 +16,16 @@ include 'bootstrap.php'; ?>
 <?php
 // define variables and set to empty values
 
-$welcomemsg="";
 
 session_start();
-
-if (isset($_SESSION['username']))
+$username = "Username";
+$password = "Password";
+if (!isset($_SESSION['username']))
 { 
-    $user = $_SESSION['username'];
-    $welcomemsg = "Hey, {$user}!";
+    header("Location: login.php");
 }
+else { $username = $_SESSION['username']; }
+
         
              $dbConfig = array(
                     "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
@@ -45,7 +46,8 @@ if (isset($_SESSION['username']))
         
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["name"])) {
-       return;
+       header("Location: login.php");
+       echo 'No name entered!';
    }
    else {
     $new_name = $_POST["name"];

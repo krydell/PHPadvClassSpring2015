@@ -47,17 +47,17 @@ else { $username = $_SESSION['username']; }
             "DB_PASSWORD"=>''
         );
         
-        $pdo = new DB($dbConfig);
+        $pdo = new DB($dbConfig); // Making databae..
         $db = $pdo->getDB();
         
         $util = new Util();        
         $validator = new Validator();        
         
-        $petDAO = new PetDAO($db);
+        $petDAO = new PetDAO($db); // Creating pet 
         $userDAO = new UserDAO($db);
         $petModel = new PetModel();
  
-        $pets = $petDAO->getUsersPets($username);        
+        $pets = $petDAO->getUsersPets($username);    // Get the pets based on the user that is currently logged in     
         
   
         
