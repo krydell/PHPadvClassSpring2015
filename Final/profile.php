@@ -57,8 +57,9 @@ else { $username = $_SESSION['username']; }
         $userDAO = new UserDAO($db);
         $petModel = new PetModel();
  
-        $pets = $petDAO->getAllRows();        
+        $pets = $petDAO->getUsersPets($username);        
         
+  
         
         /* 
         $email = filter_input(INPUT_POST, 'email');
@@ -88,17 +89,22 @@ else { $username = $_SESSION['username']; }
       <td class="tg-y8od" style="font-size:16px;">
   <h1>Your Profile</h1>                  
        <p>Username: <input type="text" name="name" value="<?php echo $username;?>" readonly></p>
-       <p>Password: <input type="password" name="pass" value="<?php echo $password;?>" readonly></p>     
+       <p>Password: <input type="password" name="pass" value="<?php echo $password;?>" readonly></p>
+       <hr>
+       <h1>Your Pets</h1>
 <?php         
-             
-            
+                    
            /* echo $phoneTypes[0]->getPhonetype();
             echo $phoneTypes[1]->getPhonetype();
             echo $phoneTypes[2]->getPhonetype();
             */
+
             foreach ($pets as $value) {
-                echo '<p>',$value->getPet(),'</p>';
-            }
+                echo '<p><b>Pet Name:</b> ',$value->getPetname(),'</p>';
+                echo '<p><b>Species:</b> ',$value->getSpecies(),'</p>';
+                echo '<a href="delete-pet.php?id=',$value->getPetId(),'">Abandon ',$value->getPetname(), '</a>';
+             }
+           
             
            // var_dump($phoneTypes);
             

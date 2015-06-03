@@ -9,10 +9,21 @@
 include 'bootstrap.php';
 // Inialize session
 
+        $dbConfig = array(
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_USER"=>'root',
+            "DB_PASSWORD"=>''
+        );
+        
+        $pdo = new DB($dbConfig);
+        $db = $pdo->getDB();
+
 session_start();
 $error = "";
 $user = "";
 $pw = "";
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -39,7 +50,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     { $_SESSION['username'] = $user;
       header("Location: index.php");
     }
+    else
+    {
+        
+    $query = "SELECT * FROM login";
+
+    $count = $db->exec($query);
     
+    echo "<center><b>{$count}, {$user}, {$pw} </b></center>";
+    
+    }
     
     
     

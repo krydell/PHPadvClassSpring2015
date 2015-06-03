@@ -67,12 +67,12 @@ class PetModel implements IModel {
     * When a class has to implement an interface those functions must be created in the class.
     */
     public function reset() {
-        $this->pet_id('');
-        $this->pet_name('');
-        $this->species('');
-        $this->happy('');
-        $this->hungry('');
-        $this->owner('');
+        $this->setPetid('');
+        $this->setPetname('');
+        $this->setSpecies('');
+        $this->setHappy('');
+        $this->setHunger('');
+        $this->setOwner('');
 
         return $this;
     }
@@ -85,20 +85,20 @@ class PetModel implements IModel {
             $this->setPetid($values['pet_id']);
         }
         
-        if ( array_key_exists('name', $values) ) {
-            $this->setPetname($values['name']);
+        if ( array_key_exists('pet_name', $values) ) {
+            $this->setPetname($values['pet_name']);
         }
         
-        if ( array_key_exists('pet', $values) ) {
-            $this->setSpecies($values['pet']);
+        if ( array_key_exists('species', $values) ) {
+            $this->setSpecies($values['species']);
         }
         
         if ( array_key_exists('happy', $values) ) {
             $this->setHappy($values['happy']);
         }
         
-        if ( array_key_exists('hunger', $values) ) {
-            $this->setHunger($values['hunger']);
+        if ( array_key_exists('hungry', $values) ) {
+            $this->setHunger($values['hungry']);
         }
         
         if ( array_key_exists('username', $values) ) {

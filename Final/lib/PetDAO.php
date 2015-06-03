@@ -101,13 +101,11 @@ class PetDAO implements IDAO {
     }
      
     
-    
-    public function getAllRows() {
+    public function getAllRows() { 
        
         $values = array();         
         $db = $this->getDB();               
-        $stmt = $db->prepare("SELECT pets.pet_name, pets.species, pets.hungry, pets.happy"
-                 . " FROM pets, login"); // WHERE login.username = pets.owner
+        $stmt = $db->prepare("SELECT * FROM pets");
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -124,5 +122,29 @@ class PetDAO implements IDAO {
         $stmt->closeCursor();         
          return $values;
      }
+
+     
+    public function getUsersPets($user) { 
+       
+        $values = array();         
+        $db = $this->getDB();               
+        $stmt = $db->prepare("SELECT * FROM pets WHERE owner = '$user'");
+        
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($results as $value) {
+               $model = new PetModel();
+               $model->reset()->map($value);
+               $values[] = $model;
+            }
+             
+        }   else {            
+           //log($db->errorInfo() .$stmt->queryString ) ;           
+        }  
+        
+        $stmt->closeCursor();         
+         return $values;
+     }
+     
      
 }

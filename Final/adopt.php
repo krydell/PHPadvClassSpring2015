@@ -63,9 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    if($petErr == "" && $nameErr == "")
    {
-
        
-                      
+           /*           
 $petModel = new PetModel();
 $petDAO = new PetDAO($db);                    
 $petModel->map(filter_input_array(INPUT_POST));
@@ -76,6 +75,16 @@ if ( $petDAO->save($petModel) ) {
                     } else {
                         echo '<div style="background-color:red;color:white;text-align:center;">E-mail not added/updated.</div>';
                     }    
+   } */
+       
+    $query = "INSERT INTO pets
+                 (pet_id, pet_name, species, happy, hungry, owner)
+              VALUES
+                 ('', '$name','$pet', 10, 100, '$username');"; // add row
+    
+    $db->exec($query);
+       
+       echo "<div style=\"background-color:white;text-align:center;\">Pet adopted!</div>";
    }
 }
 
